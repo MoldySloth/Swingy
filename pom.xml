@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>wethinkcode</groupId>
-    <artifactId>my-project</artifactId>
+    <groupId>rde-jage.wethinkcode</groupId>
+    <artifactId>swingy</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>swingy</name>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>LATEST</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -56,8 +56,8 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/${project.build.finalName}.dependencies</outputDirectory>
-                            <overWriteRelease>false</overWriteRelease>
+                            <outputDirectory>${project.build.directory}/dependencies</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>false</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
                         </configuration>
@@ -73,8 +73,8 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <classpathPrefix>${project.build.finalName}.dependencies</classpathPrefix>
-                            <mainClass>model.App</mainClass>
+                            <classpathPrefix>dependencies/</classpathPrefix>
+                            <mainClass>rdejage.wethinkcode.swingy.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -82,29 +82,24 @@
 
             <!-- Default binding for jar packaging -->
             <plugin>
-                <groupId>org.apache.maven.plaugins</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>LATEST</version>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plaugins</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>LATEST</version>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plaugins</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>LATEST</version>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plaugins</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>LATEST</version>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plaugins</groupId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>LATEST</version>
             </plugin>
 
         </plugins>

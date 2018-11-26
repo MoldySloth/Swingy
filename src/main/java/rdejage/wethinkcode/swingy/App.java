@@ -1,4 +1,4 @@
-package model;
+package rdejage.wethinkcode.swingy;
 
 public class App {
     public static void main(String[] args) {

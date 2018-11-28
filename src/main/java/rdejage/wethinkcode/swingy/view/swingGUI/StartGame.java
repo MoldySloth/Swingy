@@ -1,4 +1,4 @@
-package rdejage.wethinkcode.swingy.view;
+package rdejage.wethinkcode.swingy.view.swingGUI;
 
 import javax.swing.*;
 

@@ -100,7 +100,7 @@ public class Character {
         String weapon = "Plastic sword";
         String artifact = "Cardboard box";
         String  info = "";
-        info += this.name + " the Paladin," + this.level + "," + this.exp + "," + weapon + "," + artifact;
+        info += this.name + " the " + this.type + "," + this.level + "," + this.exp + "," + weapon + "," + artifact;
         return info;
     }
 
@@ -114,5 +114,9 @@ public class Character {
 
     public Integer  getBaseHitPoints() {
         return this.hitPoints_base;
+    }
+
+    public Integer  getLevel() {
+        return this.level;
     }
 }

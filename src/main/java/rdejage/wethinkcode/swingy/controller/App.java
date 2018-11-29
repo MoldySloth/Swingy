@@ -1,5 +1,6 @@
 package rdejage.wethinkcode.swingy.controller;
 
+import rdejage.wethinkcode.swingy.model.MapGenerator;
 import rdejage.wethinkcode.swingy.model.characters.Character;
 import rdejage.wethinkcode.swingy.model.characters.CharacterFactory;
 import rdejage.wethinkcode.swingy.view.WindowManager;
@@ -14,7 +15,7 @@ public class App {
         GameController          game = null;
         WindowManager           view = null;
         Character               hero = null;
-        Map                     map = null;
+        MapGenerator            map = null;
 
         // If there are arguments
         if (args.length > 0) {
@@ -39,7 +40,7 @@ public class App {
                 Integer     heroClass = view.heroClass();
                 hero = CharacterFactory.newCharacter(name, heroClass);
             } else if(option == 2) {
-                // Use an old hero
+                // Use an old hero from file
             }
 
             // Start the game
@@ -47,8 +48,8 @@ public class App {
                 // Add hero to the hero.txt file
                 hero.addHero(hero);
                 // Generate a map based on hero stats
-               //map = new Map(hero);
-                //game = new GameController(view, map, hero);
+                map = new MapGenerator(hero);
+                game = new GameController(view, map, hero);
             }
         } else {
             // exit with error

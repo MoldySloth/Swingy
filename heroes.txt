@@ -1,1 +1,2 @@
-John the Teenager,Knight,2,540,short sword,leather armor
+Kevin the Paladin,1,0,Plastic sword,Cardboard box
+Susan the Paladin,1,0,Plastic sword,Cardboard box

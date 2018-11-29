@@ -3,17 +3,28 @@ package rdejage.wethinkcode.swingy.model.characters;
 import javax.validation.constraints.NotNull;
 
 public class Bruser extends Character {
-    @NotNull
-    public String       name;
-    @NotNull
-    private Integer     exp = 0;
-
     public Bruser(String name) {
-        this.name = name;
-        level = 0;
-        attack = 100;
-        armor = 250;
-        hitPoints = 100;
-        System.out.println("Bruser named " + name + " with " + attack + " attack, " + armor + " armor and " + hitPoints + " hit points.");
+        // save as a character
+        super(name, "Bruser", 100, 250, 100);
+        System.out.println("Bruser named " + name + " with " + attack_base + " attack, " + armor_base + " armor and " + hitPoints_base + " hit points.\n");
+    }
+
+//    public Bruser(String name, String type, Integer level, Integer experience, String weapon, String artifact) {
+//        super(name, type, level, experience, weapon, artifact);
+//    }
+
+    @Override
+    public Integer  getBaseAttack() {
+        return 100;
+    }
+
+    @Override
+    public Integer  getBaseArmor() {
+        return 250;
+    }
+
+    @Override
+    public Integer  getBaseHitPoints() {
+        return 100;
     }
 }

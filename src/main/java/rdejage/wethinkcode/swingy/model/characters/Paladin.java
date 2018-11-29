@@ -1,19 +1,33 @@
 package rdejage.wethinkcode.swingy.model.characters;
 
-import javax.validation.constraints.NotNull;
+import lombok.Getter;
 
+@Getter
 public class Paladin extends Character {
-    @NotNull
-    public String       name;
-    @NotNull
-    private Integer     exp = 0;
-
     public Paladin(String name) {
-        this.name = name;
-        level = 0;
-        attack = 100;
-        armor = 150;
-        hitPoints = 150;
-        System.out.println("Paladin named " + name + " with " + attack + " attack, " + armor + " armor and " + hitPoints + " hit points.");
+        // save as a character
+        super(name, "Paladin", 100, 150, 150);
+        System.out.println("Paladin named " + name + " with " + attack_base + " attack, " + armor_base + " armor and " + hitPoints_base + " hit points.\n");
+    }
+
+//    public Paladin(String name, String type, Integer level, Integer experience, String weapon, String artifact) {
+//        super(name, type, level, experience, weapon, artifact);
+//    }
+
+    @Override
+    public Integer  getBaseAttack() {
+        return 100;
+    }
+
+    @Override
+    public Integer  getBaseArmor() {
+        return 150;
+    }
+
+    @Override
+    public Integer  getBaseHitPoints() {
+        return 150;
     }
 }
+
+//    John the Teenager,Knight,2,540,short sword,leather armor

@@ -79,7 +79,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>dependencies/</classpathPrefix>
-                            <mainClass>rdejage.wethinkcode.swingy.App</mainClass>
+                            <mainClass>rdejage.wethinkcode.swingy.controller.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

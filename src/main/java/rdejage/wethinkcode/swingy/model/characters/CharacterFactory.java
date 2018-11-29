@@ -1,8 +1,8 @@
 package rdejage.wethinkcode.swingy.model.characters;
 
 public class CharacterFactory {
-    public static Character newCharacter(String name, Integer classtype) {
-        switch (classtype) {
+    public static Character newCharacter(String name, Integer classType) {
+        switch (classType) {
             case 1:
                 return new Paladin(name);
             case 2:

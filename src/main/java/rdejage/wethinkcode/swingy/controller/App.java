@@ -1,18 +1,20 @@
-package rdejage.wethinkcode.swingy;
+package rdejage.wethinkcode.swingy.controller;
 
-import rdejage.wethinkcode.swingy.model.Game;
 import rdejage.wethinkcode.swingy.model.characters.Character;
 import rdejage.wethinkcode.swingy.model.characters.CharacterFactory;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 import rdejage.wethinkcode.swingy.view.console.ConsoleView;
 
+import java.util.Map;
+
 public class App {
     public static void main(String[] args) {
         System.out.println("App is working");
 
-        Game            game = null;
-        WindowManager   view = null;
-        Character       hero = null;
+        GameController          game = null;
+        WindowManager           view = null;
+        Character               hero = null;
+        Map                     map = null;
 
         // If there are arguments
         if (args.length > 0) {
@@ -42,7 +44,11 @@ public class App {
 
             // Start the game
             if(hero != null) {
-
+                // Add hero to the hero.txt file
+                hero.addHero(hero);
+                // Generate a map based on hero stats
+               //map = new Map(hero);
+                //game = new GameController(view, map, hero);
             }
         } else {
             // exit with error

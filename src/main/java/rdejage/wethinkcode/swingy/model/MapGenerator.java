@@ -4,11 +4,17 @@ import rdejage.wethinkcode.swingy.model.characters.Character;
 
 public class MapGenerator {
     private Integer     mapSize;
+    private Character[] villians;
 
     public MapGenerator(Character hero) {
         // get the map size based on level
         Integer     level = hero.getLevel();
         this.mapSize = getMapSize(level);
+
+    }
+
+    public void     generateVillains() {
+
     }
 
     public Integer  getMapSize(Integer level) {

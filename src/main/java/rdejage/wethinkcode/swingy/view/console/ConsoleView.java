@@ -2,6 +2,9 @@ package rdejage.wethinkcode.swingy.view.console;
 
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -84,5 +87,41 @@ public class ConsoleView extends WindowManager {
         }
 
         return option;
+    }
+
+    @Override
+    public Integer     loadHeroes(String fileName) {
+        // Choose an existing hero from file
+        System.out.println("Here are some existing heroes, choose one to continue");
+
+        boolean     validInput = false;
+        int         option = 0;
+        while(!validInput) {
+            try {
+                Scanner     scanner = new Scanner(System.in);
+                // read the file
+                BufferedReader br = new BufferedReader(new FileReader(fileName));
+                String      line;
+                Integer     index = 1;
+                while((line = br.readLine()) != null) {
+                    System.out.println(index + ". " + line);
+                    index++;
+                }
+
+                option = scanner.nextInt();
+                if(option < 1 || option > index - 1) {
+                    System.out.println("Invalid input");
+                } else if(option >= 1 && option <= index - 1) {
+                    validInput = true;
+                }
+            } catch (IOException | InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a number");
+            }
+        }
+        return option;
+    }
+
+    public void     characterInfo(String info) {
+        System.out.println(info);
     }
 }

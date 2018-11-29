@@ -8,4 +8,6 @@ public abstract class WindowManager {
 
     public abstract String      heroName();
     public abstract Integer     heroClass();
+
+    public abstract Integer     loadHeroes(String fileName);
 }

@@ -7,16 +7,11 @@ import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.artifacts.Weapon;
 
 import javax.validation.constraints.NotNull;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 @Getter
 @Setter
 public class Character {
-    private static final String     filename = "heroes.txt";
-
     @NotNull
     public String       name;
     @NotNull
@@ -44,55 +39,17 @@ public class Character {
         this.artifact = null;
     }
 
-//    public Character(String name, String type, Integer level, Integer experience, String weapon, String artifact) {
-//        this.name = name;
-//        this.type = type;
-//
-//        // Get base stats for type
-//        switch(type) {
-//            case "Palidin":
-//                this.attack_base = getBaseAttack();
-//                System.out.println("Base attack found " + attack_base);
-//                this.armor_base = getBaseArmor();
-//                System.out.println("Base attack found " + armor_base);
-//                this.hitPoints_base = getBaseHitPoints();
-//                System.out.println("Base attack found " + hitPoints_base);
-//        }
-//
-//        this.level = level;
-//        this.exp = experience;
-//
-//        // Get the weapon type from string
-//        System.out.println("The following weapon was found " + weapon);
-//
-//        // Get the artifact type from string
-//        System.out.println("The following artifact was was found " + artifact);
-//    }
+    public Character(String name, String type, Integer level, Integer experience, String weapon, String artifact) {
+        this.name = name;
+        this.type = type;
+        this.level = level;
+        this.exp = experience;
 
+        // Get the weapon type from string
+        System.out.println("The following weapon was found " + weapon);
 
-    public void addHero(Character hero) {
-        // place the hero into the hero.txt file
-        File    file = new File(filename);
-        if(!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch(IOException e) {
-                System.out.println("Cannot create file heroes.txt");
-                System.exit(1);
-            }
-        }
-        // append new hero to file
-        try {
-            FileWriter      fw = new FileWriter(filename, true);
-            BufferedWriter  bw = new BufferedWriter(fw);
-            String          heroInfo = hero.getInfo();
-            bw.write(heroInfo);
-            bw.newLine();
-            bw.flush();
-        } catch (IOException e) {
-            System.out.println("Cannot write to file heroes.txt");
-            System.exit(1);
-        }
+        // Get the artifact type from string
+        System.out.println("The following artifact was was found " + artifact);
     }
 
     public String   getInfo() {

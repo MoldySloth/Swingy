@@ -2,3 +2,5 @@ Kevin the Paladin,1,0,Plastic sword,Cardboard box
 Susan the Paladin,1,0,Plastic sword,Cardboard box
 Geff the Necromancer,1,0,Plastic sword,Cardboard box
 Sid the Slayer,1,0,Plastic sword,Cardboard box
+Tim the Paladin,1,0,Plastic sword,Cardboard box
+Timmy the Necromancer,1,0,Plastic sword,Cardboard box

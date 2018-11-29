@@ -20,6 +20,20 @@ public class GameController {
 
     public void     start() {
         // play the game loop
+        hero.setPosition(map.getSize());
+        // move the character
+        while(hero.getStatus()) {
+            // check if hero has reached the edges? then game won
+            System.out.println("Hero position is y:" + hero.getPosY() + " x:" + hero.getPosX());
+            // get hero position and move
+            int direction = view.getDirection();
+            hero.moveCharacter(direction);
+            // check hero position on the map is still valid
+            if(map.positionIsValid(hero.getPosX(), hero.getPosY())) {
+                // check to see if there is an enemy
+            }
+
+        }
 
     }
 }

@@ -121,7 +121,37 @@ public class ConsoleView extends WindowManager {
         return option;
     }
 
+    @Override
     public void     characterInfo(String info) {
         System.out.println(info);
+    }
+
+    @Override
+    public Integer  getDirection() {
+        // Function to get hero movement input from the player
+        System.out.println("Please select a direction to move to:");
+
+        boolean     validInput = false;
+        int         option = 0;
+        while(!validInput) {
+            try {
+                Scanner     scanner = new Scanner(System.in);
+                System.out.println("1. North");
+                System.out.println("2. East");
+                System.out.println("3. South");
+                System.out.println("4. West");
+
+                option = scanner.nextInt();
+                if(option < 1 || option > 4) {
+                    System.out.println("Invalid input");
+                } else if(option >= 1 || option <= 4) {
+                    validInput = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a number");
+            }
+        }
+
+        return option;
     }
 }

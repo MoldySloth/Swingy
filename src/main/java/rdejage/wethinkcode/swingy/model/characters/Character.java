@@ -64,16 +64,24 @@ public class Character {
         switch (direction) {
             case 1:
                 // move up
-                setPosY(this.posY - 1);
+                System.out.println("Moving player North");
+                setPosY(posY - 1);
+                break;
             case 2:
                 // move right
-                setPosX(this.posX + 1);
+                System.out.println("Moving player East");
+                setPosX(posX + 1);
+                break;
             case 3:
                 // move down
-                setPosY(this.posY + 1);
+                System.out.println("Moving player South");
+                setPosY(posY + 1);
+                break;
             case 4:
                 // move left
-                setPosX(this.posX - 1);
+                System.out.println("Moving player West");
+                setPosX(posX - 1);
+                break;
             default:
                 break;
         }
@@ -117,7 +125,8 @@ public class Character {
     }
 
     public void     setPosition(Integer mapSize) {
-        posX = posY = mapSize % 2;
+        setPosX(mapSize/2);
+        setPosY(mapSize/2);
     }
 
     public void setPosX(Integer posX) {

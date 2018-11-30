@@ -1,5 +1,6 @@
 package rdejage.wethinkcode.swingy.model.characters;
 
+import javax.validation.constraints.NegativeOrZero;
 import javax.validation.constraints.NotNull;
 
 public class Villain {
@@ -15,6 +16,8 @@ public class Villain {
     protected Integer   armor;
     @NotNull
     protected Integer   hitPoints;
+    @NotNull
+    protected boolean   status;
 
     public      Villain(String villainType, Integer xPos, Integer yPos, Integer attack, Integer armor, Integer hitPoints) {
         this.villainType = villainType;
@@ -23,6 +26,7 @@ public class Villain {
         this.attack = attack;
         this.armor = armor;
         this.hitPoints = hitPoints;
+        this.status = true;
     }
 
     public Integer getPosX() {
@@ -43,5 +47,21 @@ public class Villain {
         info += "Showing no mercy your enemy has...\n";
         info += "an attack of " + this.attack + ", armor " + this.armor + ", hit points " + this.hitPoints;
         return info;
+    }
+
+    public void     takeDamage(Integer damage) {
+        // use armor as a buff for damage
+        damage -= armor;
+        if(damage >= hitPoints) {
+            // This villain dies
+            this.hitPoints = 0;
+        } else {
+            // villain takes damage update armor and hitPoints
+            this.hitPoints -= damage;
+        }
+    }
+
+    public boolean getStatus() {
+        return status;
     }
 }

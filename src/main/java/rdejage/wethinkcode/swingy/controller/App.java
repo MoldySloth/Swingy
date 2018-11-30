@@ -57,7 +57,7 @@ public class App {
             // Start the game
             if(hero != null) {
                 // Print out hero info
-                ((ConsoleView) view).characterInfo(hero.getInfo());
+                view.printInfo(hero.getInfo());
                 // Generate a map based on hero stats
                 map = new MapGenerator(hero);
                 game = new GameController(view, map, hero);

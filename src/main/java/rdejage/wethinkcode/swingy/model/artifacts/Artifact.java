@@ -8,4 +8,12 @@ import lombok.Setter;
 public class Artifact {
     protected String    buffType;
     protected Integer   buffValue;
+
+    public String   getBuffType() {
+        return buffType;
+    }
+
+    public String   getArtifactName() {
+        return this.getArtifactName();
+    }
 }

@@ -2,6 +2,8 @@ package rdejage.wethinkcode.swingy.controller;
 
 
 import rdejage.wethinkcode.swingy.model.MapGenerator;
+import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
+import rdejage.wethinkcode.swingy.model.artifacts.ArtifactFactory;
 import rdejage.wethinkcode.swingy.model.characters.Character;
 import rdejage.wethinkcode.swingy.model.characters.Villain;
 import rdejage.wethinkcode.swingy.view.WindowManager;
@@ -36,12 +38,29 @@ public class GameController {
                 if(villain != null) {
                     // print out villain and villain stats
                     System.out.println("You have encountered an enemy: " + villain.getVillainType());
-                    view.villainInfo(villain.getInfo());
+                    view.printInfo(villain.getInfo());
                     // give options to fight or run
                     Integer     action = view.actionOption();
                     if(action == 1) {
                         // Fight the enemy
                         map.fightVillain();
+                        if(villain.getStatus()) {
+                            // if the enemy is dead... you have a chance to get an item
+                            // drop item based on a percentage drop rate
+                            try {
+                                Artifact item = ArtifactFactory.buildArtifact();
+                                // Print out weapon description and get choice options
+                                if (item != null) {
+                                    int choice = view.chooseItem(item);
+                                    if (choice == 1) {
+                                        // add item to hero
+                                        hero.addItem(item);
+                                    }
+                                }
+                            } catch (IllegalArgumentException e) {
+                                System.out.println("Map Error: Could not drop item");
+                            }
+                        }
                     } else if(action == 2) {
                         // Run from the enemy
                         if(hero.run()) {

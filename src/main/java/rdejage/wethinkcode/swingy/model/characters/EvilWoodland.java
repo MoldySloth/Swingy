@@ -5,7 +5,3 @@ public class EvilWoodland extends Villain {
         super("Evil Woodland Creature", x, y, 50, 50, 50);
     }
 }
-
-// attack 50
-// hp 50
-// armor 50

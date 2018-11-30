@@ -23,7 +23,7 @@ public class Character {
     protected Integer   hitPoints_base;
     protected Integer   exp;
     protected Integer   level;
-    protected Weapon    weapon;
+    protected Artifact  weapon;
     protected Artifact  artifact;
     protected Integer   posX;
     protected Integer   posY;
@@ -91,6 +91,25 @@ public class Character {
     public void     fight(Villain villain) {
         // Simulate a fight with the villain
         System.out.println("The hero is fighting " + villain.getVillainType());
+        while(this.status) {
+            villain.takeDamage(this.getAttack());
+            if(villain.getStatus()) {
+                takeDamage(villain.attack);
+            }
+        }
+
+    }
+
+    private void     takeDamage(Integer damage) {
+        // use armor as a buff for damage
+        Integer     trueDamage = damage - getAromr();
+        if(trueDamage >= getHitPoints()) {
+            // This villain dies
+            this.hitPoints_base = 0;
+        } else {
+            // villain takes damage update armor and hitPoints
+            this.hitPoints_base = getHitPoints() - damage;
+        }
     }
 
     public boolean  run() {
@@ -102,6 +121,11 @@ public class Character {
         return false;
     }
 
+    public void     addItem(Artifact item) {
+        // check if Item can be added, drop item if needed
+        System.out.println(item.getArtifactName() + " has been added to your inventory");
+    }
+
     public String   getInfo() {
         // Some hard coded info
         String weapon = "Plastic sword";
@@ -111,15 +135,44 @@ public class Character {
         return info;
     }
 
+    private Integer  getAttack() {
+        // return attack value based on weapon and base attack
+        if(weapon != null) {
+            return this.attack_base + 10;
+        }
+        return this.attack_base;
+    }
+
+    private Integer  getAromr() {
+        // return attack value based on weapon and base attack
+        if(artifact != null) {
+            if(artifact.getBuffType().equals("Armor")) {
+                return this.armor_base + 10;
+            }
+        }
+        return this.armor_base;
+    }
+
+    private Integer  getHitPoints() {
+        // return attack value based on weapon and base attack
+        if(artifact != null) {
+            if(artifact.getBuffType().equals("Helm")) {
+                return this.hitPoints_base + 10;
+            }
+
+        }
+        return this.hitPoints_base;
+    }
+
     public Integer  getLevel() {
         return this.level;
     }
 
-    public Integer getPosX() {
+    public Integer  getPosX() {
         return this.posX;
     }
 
-    public Integer getPosY() {
+    public Integer  getPosY() {
         return this.posY;
     }
 
@@ -132,11 +185,13 @@ public class Character {
         setPosY(mapSize/2);
     }
 
-    public void setPosX(Integer posX) {
+    private void     setPosX(Integer posX) {
         this.posX = posX;
     }
 
-    public void setPosY(Integer posY) {
+    private void     setPosY(Integer posY) {
         this.posY = posY;
     }
+
+
 }

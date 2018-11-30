@@ -1,7 +1,10 @@
 package rdejage.wethinkcode.swingy.view.console;
 
+import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
+import rdejage.wethinkcode.swingy.model.artifacts.Weapon;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
+import javax.lang.model.element.NestingKind;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -122,12 +125,9 @@ public class ConsoleView extends WindowManager {
     }
 
     @Override
-    public void     characterInfo(String info) {
+    public void     printInfo(String info) {
         System.out.println(info);
     }
-
-    @Override
-    public void     villainInfo(String info) { System.out.println(info); }
 
     @Override
     public Integer  getDirection() {
@@ -186,5 +186,32 @@ public class ConsoleView extends WindowManager {
         return option;
     }
 
+    // give options to take or leave item
+    @Override
+    public Integer  chooseItem(Artifact item) {
+        // Give game options to the player
+        boolean     validInput = false;
+        int         option = 0;
+        while(!validInput) {
+            try {
+                Scanner     scanner = new Scanner(System.in);
+                // get item info...
+                System.out.println(item.getArtifactName() + " was dropped during your battle:");
+                System.out.println("Select an action to perform");
+                System.out.println("1. Take the item");
+                System.out.println("2. Leave the item");
 
+                option = scanner.nextInt();
+                if(option < 1 || option > 2) {
+                    System.out.println("Invalid input");
+                } else if(option == 1 || option == 2) {
+                    validInput = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a number");
+            }
+        }
+
+        return option;
+    }
 }

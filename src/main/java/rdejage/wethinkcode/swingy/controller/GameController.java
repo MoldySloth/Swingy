@@ -32,7 +32,7 @@ public class GameController {
             // check hero position on the map is still valid
             if(map.positionIsValid(hero.getPosX(), hero.getPosY())) {
                 // check to see if there is an enemy
-                Villain villain = map.isVillain(hero.getPosX(), hero.getPosY());
+                Villain villain = map.isVillain();
                 if(villain != null) {
                     // print out villain and villain stats
                     System.out.println("You have encountered an enemy: " + villain.getVillainType());
@@ -41,8 +41,14 @@ public class GameController {
                     Integer     action = view.actionOption();
                     if(action == 1) {
                         // Fight the enemy
+                        map.fightVillain();
                     } else if(action == 2) {
                         // Run from the enemy
+                        if(hero.run()) {
+                            System.out.println("You have successfully run from the enemy and landed back in your previous position");
+                        } else {
+                            System.out.println("You could not run from the enemy");
+                        }
                     }
                 }
             } else {

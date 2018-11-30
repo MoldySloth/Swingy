@@ -7,11 +7,13 @@ import rdejage.wethinkcode.swingy.model.characters.VillainFactory;
 import java.util.*;
 
 public class MapGenerator {
+    private Character       hero;
     private Integer         mapSize;
     private static final List<Villain>    villains = new ArrayList<Villain>();
 
     public MapGenerator(Character hero) {
         // get the map size based on level
+        this.hero = hero;
         Integer     level = hero.getLevel();
         this.mapSize = getMapSize(level);
         generateVillains();
@@ -40,14 +42,20 @@ public class MapGenerator {
         }
     }
 
-    public Villain  isVillain(Integer x, Integer y) {
+    public Villain  isVillain() {
         // Compare hero coordinates to villains coordinates
         for(Villain villain: villains) {
-            if(villain.getPosX().equals(x) && villain.getPosY().equals(y)) {
+            if(villain.getPosX().equals(hero.getPosX()) && villain.getPosY().equals(hero.getPosY())) {
                 return villain;
             }
         }
         return null;
+    }
+
+    public void     fightVillain() {
+        Villain     villain = isVillain();
+        // hero attacks villain...
+        hero.fight(villain);
     }
 
     public Integer  getMapSize(Integer level) {

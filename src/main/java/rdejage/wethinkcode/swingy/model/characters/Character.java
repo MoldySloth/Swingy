@@ -6,6 +6,7 @@ import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.artifacts.Weapon;
 
 import javax.validation.constraints.NotNull;
+import java.util.Random;
 
 @Getter
 @Setter
@@ -87,6 +88,20 @@ public class Character {
         }
     }
 
+    public void     fight(Villain villain) {
+        // Simulate a fight with the villain
+        System.out.println("The hero is fighting " + villain.getVillainType());
+    }
+
+    public boolean  run() {
+        Random      rand = new Random();
+        int         n = rand.nextInt(2);
+        if(n == 1) {
+            return true;
+        }
+        return false;
+    }
+
     public String   getInfo() {
         // Some hard coded info
         String weapon = "Plastic sword";
@@ -94,18 +109,6 @@ public class Character {
         String  info = "";
         info += this.name + " the " + this.type + "," + this.level + "," + this.exp + "," + weapon + "," + artifact;
         return info;
-    }
-
-    public Integer  getBaseAttack() {
-        return this.attack_base;
-    }
-
-    public Integer  getBaseArmor() {
-        return this.armor_base;
-    }
-
-    public Integer  getBaseHitPoints() {
-        return this.hitPoints_base;
     }
 
     public Integer  getLevel() {

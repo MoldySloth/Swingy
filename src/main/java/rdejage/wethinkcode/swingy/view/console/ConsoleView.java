@@ -127,6 +127,9 @@ public class ConsoleView extends WindowManager {
     }
 
     @Override
+    public void     villainInfo(String info) { System.out.println(info); }
+
+    @Override
     public Integer  getDirection() {
         // Function to get hero movement input from the player
         System.out.println("Please select a direction to move to:");
@@ -154,4 +157,34 @@ public class ConsoleView extends WindowManager {
 
         return option;
     }
+
+
+    // give options to fight or run
+    @Override
+    public Integer  actionOption() {
+        // Give game options to the player
+        boolean     validInput = false;
+        int         option = 0;
+        while(!validInput) {
+            try {
+                Scanner     scanner = new Scanner(System.in);
+                System.out.println("Select an action to perform");
+                System.out.println("1. Fight your enemy");
+                System.out.println("2. Run like a coward");
+
+                option = scanner.nextInt();
+                if(option < 1 || option > 2) {
+                    System.out.println("Invalid input");
+                } else if(option == 1 || option == 2) {
+                    validInput = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a number");
+            }
+        }
+
+        return option;
+    }
+
+
 }

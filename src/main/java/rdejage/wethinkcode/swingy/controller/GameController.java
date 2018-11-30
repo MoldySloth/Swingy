@@ -3,6 +3,7 @@ package rdejage.wethinkcode.swingy.controller;
 
 import rdejage.wethinkcode.swingy.model.MapGenerator;
 import rdejage.wethinkcode.swingy.model.characters.Character;
+import rdejage.wethinkcode.swingy.model.characters.Villain;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
 public class GameController {
@@ -31,6 +32,22 @@ public class GameController {
             // check hero position on the map is still valid
             if(map.positionIsValid(hero.getPosX(), hero.getPosY())) {
                 // check to see if there is an enemy
+                Villain villain = map.isVillain(hero.getPosX(), hero.getPosY());
+                if(villain != null) {
+                    // print out villain and villain stats
+                    System.out.println("You have encountered an enemy: " + villain.getVillainType());
+                    view.villainInfo(villain.getInfo());
+                    // give options to fight or run
+                    Integer     action = view.actionOption();
+                    if(action == 1) {
+                        // Fight the enemy
+                    } else if(action == 2) {
+                        // Run from the enemy
+                    }
+                }
+            } else {
+                // Hero has reached the end of the map...
+                // Hero has won... end game
             }
 
         }

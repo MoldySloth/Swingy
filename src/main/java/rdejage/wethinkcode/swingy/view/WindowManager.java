@@ -11,5 +11,7 @@ public abstract class WindowManager {
 
     public abstract Integer     loadHeroes(String fileName);
     public abstract void        characterInfo(String info);
+    public abstract void        villainInfo(String info);
     public abstract Integer     getDirection();
+    public abstract Integer     actionOption();
 }

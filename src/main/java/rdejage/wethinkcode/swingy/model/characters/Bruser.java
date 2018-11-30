@@ -12,19 +12,4 @@ public class Bruser extends Character {
     public Bruser(String name, Integer level, Integer experience, String weapon, String artifact) {
         super(name, "Bruser", level, experience, weapon, artifact);
     }
-
-    @Override
-    public Integer  getBaseAttack() {
-        return 100;
-    }
-
-    @Override
-    public Integer  getBaseArmor() {
-        return 250;
-    }
-
-    @Override
-    public Integer  getBaseHitPoints() {
-        return 100;
-    }
 }

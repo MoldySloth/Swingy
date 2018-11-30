@@ -13,21 +13,6 @@ public class Paladin extends Character {
     public Paladin(String name, Integer level, Integer experience, String weapon, String artifact) {
         super(name, "Paladin", level, experience, weapon, artifact);
     }
-
-    @Override
-    public Integer  getBaseAttack() {
-        return 100;
-    }
-
-    @Override
-    public Integer  getBaseArmor() {
-        return 150;
-    }
-
-    @Override
-    public Integer  getBaseHitPoints() {
-        return 150;
-    }
 }
 
 //    John the Teenager,Knight,2,540,short sword,leather armor

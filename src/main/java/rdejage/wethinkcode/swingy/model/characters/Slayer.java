@@ -10,19 +10,4 @@ public class Slayer extends Character {
     public Slayer(String name, Integer level, Integer experience, String weapon, String artifact) {
         super(name, "Slayer", level, experience, weapon, artifact);
     }
-
-    @Override
-    public Integer  getBaseAttack() {
-        return 150;
-    }
-
-    @Override
-    public Integer  getBaseArmor() {
-        return 100;
-    }
-
-    @Override
-    public Integer  getBaseHitPoints() {
-        return 50;
-    }
 }

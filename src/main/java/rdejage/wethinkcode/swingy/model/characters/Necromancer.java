@@ -12,19 +12,4 @@ public class Necromancer extends Character {
     public Necromancer(String name, Integer level, Integer experience, String weapon, String artifact) {
         super(name, "Necromancer", level, experience, weapon, artifact);
     }
-
-    @Override
-    public Integer  getBaseAttack() {
-        return 50;
-    }
-
-    @Override
-    public Integer  getBaseArmor() {
-        return 150;
-    }
-
-    @Override
-    public Integer  getBaseHitPoints() {
-        return 150;
-    }
 }

@@ -3,6 +3,7 @@ package rdejage.wethinkcode.swingy.model.characters;
 import lombok.Getter;
 import lombok.Setter;
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
+import rdejage.wethinkcode.swingy.model.artifacts.ArtifactFactory;
 
 import javax.validation.constraints.NotNull;
 import java.util.Random;
@@ -42,7 +43,7 @@ public class Character {
         this.status = true;
     }
 
-    public Character(String name, String type, Integer level, Integer experience, String weapon, String artifact) {
+    public Character(String name, String type, Integer level, Integer experience, String weapon, String artifact, String buffType) {
         this.name = name;
         this.type = type;
         this.exp = experience;
@@ -73,15 +74,26 @@ public class Character {
             default:
                 break;
         }
-        this.weapon = null;
-        this.artifact = null;
-        this.status = true;
 
         // Get the weapon type from string
-        System.out.println("The following weapon was found " + weapon);
+        if(!weapon.equals("null")) {
+            this.weapon = ArtifactFactory.buildArtifact(weapon, "Weapon");
+        } else {
+            this.weapon = null;
+        }
 
         // Get the artifact type from string
-        System.out.println("The following artifact was was found " + artifact);
+        if(!artifact.equals("null")) {
+            if(buffType.equals("Helm")) {
+                this.weapon = ArtifactFactory.buildArtifact(weapon, "Helm");
+            } else if(buffType.equals("Armor")) {
+                this.weapon = ArtifactFactory.buildArtifact(weapon, "Armor");
+            }
+        } else {
+            this.artifact = null;
+        }
+
+        this.status = true;
     }
 
     public void     moveCharacter(Integer direction) {
@@ -89,22 +101,18 @@ public class Character {
         switch (direction) {
             case 1:
                 // move up
-                System.out.println("Moving player North");
                 setPosY(posY - 1);
                 break;
             case 2:
                 // move right
-                System.out.println("Moving player East");
                 setPosX(posX + 1);
                 break;
             case 3:
                 // move down
-                System.out.println("Moving player South");
                 setPosY(posY + 1);
                 break;
             case 4:
                 // move left
-                System.out.println("Moving player West");
                 setPosX(posX - 1);
                 break;
             default:
@@ -149,21 +157,30 @@ public class Character {
     }
 
     public String   getInfo() {
-        // Some hard coded info
-        String weapon = "Plastic sword";
-        String artifact = "Cardboard box";
         String  info = "";
-        info += this.name + " the " + this.type + "," + this.level + "," + this.exp + "," + weapon + "," + artifact;
+        String  weaponName = "none";
+        String  artifactName = "none";
+        String  artifactType = "none";
+        if(weapon != null) {
+            weaponName = weapon.getArtifactName();
+        }
+
+        if(artifact != null) {
+            artifactName = artifact.getArtifactName();
+            artifactType = artifact.getBuffType();
+        }
+
+        info += this.name + " the " + this.type + "," + this.level + "," + this.exp + "," + weaponName + "," + artifactName + "," + artifactType;
         return info;
     }
+
+    public String getName() { return name; }
 
     public Integer  getAttack() {
         // return attack value based on weapon and base attack
         if(weapon != null) {
-            System.out.println("Weapon was found and buffed hero attack x10");
-            return this.attack_base + artifact.getBuffValue();
+            return this.attack_base + weapon.getBuffValue();
         }
-        System.out.println("No weapon was found");
         return this.attack_base;
     }
 

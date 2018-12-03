@@ -11,6 +11,12 @@ public class Weapon extends Artifact {
         buffValue = getRandomValue();
     }
 
+    public Weapon(String name) {
+        artifactName = name;
+        buffType = "Weapon";
+        buffValue = getRandomValue();
+    }
+
     public static String    getRandomName() {
         // returns a random name to use as
         String[]    helmTypes = {"Wooden Sword", "Bloody Axe", "Chop! Chop! Cleaver", "Heroes Iron Long Sword"};

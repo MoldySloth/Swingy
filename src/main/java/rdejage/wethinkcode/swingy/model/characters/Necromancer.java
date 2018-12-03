@@ -9,7 +9,7 @@ public class Necromancer extends Character {
         System.out.println("Necromancer named " + name + " with " + attack_base + " attack, " + armor_base + " armor and " + hitPoints_base + " hit points.\n");
     }
 
-    public Necromancer(String name, Integer level, Integer experience, String weapon, String artifact) {
-        super(name, "Necromancer", level, experience, weapon, artifact);
+    public Necromancer(String name, Integer level, Integer experience, String weapon, String artifact, String artifactType) {
+        super(name, "Necromancer", level, experience, weapon, artifact, artifactType);
     }
 }

@@ -2,6 +2,7 @@ package rdejage.wethinkcode.swingy.view;
 
 import lombok.Getter;
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
+import rdejage.wethinkcode.swingy.model.characters.Character;
 
 @Getter
 public abstract class WindowManager {
@@ -10,6 +11,10 @@ public abstract class WindowManager {
     public abstract Integer     actionOption();
 
     public abstract void        printInfo(String info);
+    public abstract void        startGame(String info);
+    public abstract void        gameLost();
+    public abstract void        levelWon();
+    public abstract void        gameStats(Character hero);
 
     public abstract Integer     loadHeroes(String fileName);
     public abstract String      heroName();

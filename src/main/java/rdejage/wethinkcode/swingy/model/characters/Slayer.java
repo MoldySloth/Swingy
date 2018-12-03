@@ -7,7 +7,7 @@ public class Slayer extends Character {
         System.out.println("Slayer named " + name + " with " + attack_base + " attack, " + armor_base + " armor and " + hitPoints_base + " hit points.\n");
     }
 
-    public Slayer(String name, Integer level, Integer experience, String weapon, String artifact) {
-        super(name, "Slayer", level, experience, weapon, artifact);
+    public Slayer(String name, Integer level, Integer experience, String weapon, String artifact, String artifactType) {
+        super(name, "Slayer", level, experience, weapon, artifact, artifactType);
     }
 }

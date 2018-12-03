@@ -7,7 +7,7 @@ public class Bruser extends Character {
         System.out.println("Bruser named " + name + " with " + attack_base + " attack, " + armor_base + " armor and " + hitPoints_base + " hit points.\n");
     }
 
-    public Bruser(String name, Integer level, Integer experience, String weapon, String artifact) {
-        super(name, "Bruser", level, experience, weapon, artifact);
+    public Bruser(String name, Integer level, Integer experience, String weapon, String artifact, String artifactType) {
+        super(name, "Bruser", level, experience, weapon, artifact, artifactType);
     }
 }

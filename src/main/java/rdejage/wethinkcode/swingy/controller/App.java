@@ -36,6 +36,18 @@ public class App {
 
             // Get options from view to use an old hero or create a new one
             int option = view.getGameOptions();
+            if(option == 2) {
+                // Use an old hero from file, check if heroes exist
+                Integer     heroes = CharacterController.readHeroes(fileName);
+                if(heroes > 0) {
+                    Integer     heroIndex = view.loadHeroes(fileName);
+                    System.out.println("You have chosen hero number " + heroIndex);
+                    hero = CharacterController.getHero(heroIndex);
+                } else {
+                    option = 1;
+                }
+            }
+
             if(option == 1) {
                 // Create a new hero
                 String      name = view.heroName();
@@ -44,14 +56,6 @@ public class App {
 
                 // Add hero to the hero.txt file
                 CharacterController.addHero(hero, fileName);
-            } else if(option == 2) {
-                // Use an old hero from file, check if heroes exist
-                Integer     heroes = CharacterController.readHeroes(fileName);
-                if(heroes > 0) {
-                    Integer     heroIndex = view.loadHeroes(fileName);
-                    System.out.println("You have chosen hero number " + heroIndex);
-                    hero = CharacterController.getHero(heroIndex);
-                }
             }
 
             // Start the game

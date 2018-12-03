@@ -9,7 +9,7 @@ import rdejage.wethinkcode.swingy.model.characters.Villain;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
 public class GameController {
-    private static Character    hero = null;
+    private Character    hero = null;
     private MapGenerator        map = null;
     private WindowManager       view = null;
 
@@ -18,16 +18,13 @@ public class GameController {
         this.map = map;
         this.hero = hero;
         this.view = view;
-        System.out.println("Game has started with hero " + hero.name + " map size " + map.getSize() + " using view " + view.getClass());
     }
 
     public void     start() {
+        view.startGame(hero.getInfo());
         // play the game loop
         hero.setPosition(map.getSize());
-        // move the character
         while(hero.getStatus()) {
-            // check if hero has reached the edges? then game won
-            System.out.println("Hero position is y:" + hero.getPosY() + " x:" + hero.getPosX());
             // get hero position and move
             int direction = view.getDirection();
             hero.moveCharacter(direction);
@@ -79,10 +76,13 @@ public class GameController {
                 }
             } else {
                 // Hero has reached the end of the map...
-                // Hero has won... end game
+                view.levelWon();
+                // Update map based on level, play again...
             }
-
+            // print out game stats
+            view.gameStats(this.hero);
+            // update player
         }
-
+        view.gameLost();
     }
 }

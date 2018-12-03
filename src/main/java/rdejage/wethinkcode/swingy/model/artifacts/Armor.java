@@ -11,6 +11,12 @@ public class Armor extends Artifact {
         buffValue = getRandomValue();
     }
 
+    public Armor(String name) {
+        artifactName = name;
+        buffType = "Armor";
+        buffValue = getRandomValue();
+    }
+
     public static String    getRandomName() {
         // returns a random name to use as
         String[]    helmTypes = {"Pot of Luck", "Elixir of Redbull", "Heal of Water", "Elixir of Coffee"};

@@ -39,9 +39,19 @@ public class CharacterController {
         // read the file
         Integer     index = 0;
         try {
+            // place the hero into the hero.txt file
+            File file = new File(filename);
+            if(!file.exists()) {
+                try {
+                    file.createNewFile();
+                } catch(IOException e) {
+                    System.out.println("Cannot create file heroes.txt");
+                    System.exit(1);
+                }
+            }
+
             BufferedReader br = new BufferedReader(new FileReader(filename));
             String      line;
-            index = 1;
             while((line = br.readLine()) != null) {
                 // add heroes to a hero list
                 try {
@@ -52,7 +62,8 @@ public class CharacterController {
                             Integer.parseInt(line.split(",")[1]), //level
                             Integer.parseInt(line.split(",")[2]), //experiance
                             line.split(",")[3], //weapon
-                            line.split(",")[4] //artifact
+                            line.split(",")[4], //artifact
+                            line.split(",")[5] //artifact type
                     );
 
                     if(hero != null) {
@@ -65,6 +76,9 @@ public class CharacterController {
             }
         } catch (IOException e) {
             System.out.println("Cannot load heroes from file: " + filename);
+        }
+        if(index == 0) {
+            System.out.println("Sorry your the file " + filename + " is empty, please create a hero.");
         }
         return index;
     }

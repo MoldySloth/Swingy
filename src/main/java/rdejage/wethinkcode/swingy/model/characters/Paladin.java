@@ -10,8 +10,8 @@ public class Paladin extends Character {
         System.out.println("Paladin named " + name + " with " + attack_base + " attack, " + armor_base + " armor and " + hitPoints_base + " hit points.\n");
     }
 
-    public Paladin(String name, Integer level, Integer experience, String weapon, String artifact) {
-        super(name, "Paladin", level, experience, weapon, artifact);
+    public Paladin(String name, Integer level, Integer experience, String weapon, String artifact, String artifactType) {
+        super(name, "Paladin", level, experience, weapon, artifact, artifactType);
     }
 }
 

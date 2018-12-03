@@ -17,16 +17,16 @@ public class CharacterFactory {
         return null;
     }
 
-    public static Character loadCharacter(String name, String classType, Integer level, Integer experience, String weapon, String artifact) {
+    public static Character loadCharacter(String name, String classType, Integer level, Integer experience, String weapon, String artifact, String artifactType) {
         switch (classType) {
             case "Paladin":
-                return new Paladin(name, level, experience, weapon, artifact);
+                return new Paladin(name, level, experience, weapon, artifact, artifactType);
             case "Bruser":
-                return new Bruser(name, level, experience, weapon, artifact);
+                return new Bruser(name, level, experience, weapon, artifact, artifactType);
             case "Necromancer":
-                return new Necromancer(name, level, experience, weapon, artifact);
+                return new Necromancer(name, level, experience, weapon, artifact, artifactType);
             case "Slayer":
-                return new Slayer(name, level, experience, weapon, artifact);
+                return new Slayer(name, level, experience, weapon, artifact, artifactType);
             default:
                 break;
         }

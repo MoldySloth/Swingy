@@ -1,10 +1,9 @@
 package rdejage.wethinkcode.swingy.view.console;
 
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
-import rdejage.wethinkcode.swingy.model.artifacts.Weapon;
+import rdejage.wethinkcode.swingy.model.characters.Character;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
-import javax.lang.model.element.NestingKind;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -127,6 +126,28 @@ public class ConsoleView extends WindowManager {
     @Override
     public void     printInfo(String info) {
         System.out.println(info);
+    }
+
+    @Override
+    public void     startGame(String info) {
+        printInfo(info);
+        System.out.println("Your mission as a hero is to move to the edge of the map...");
+        System.out.println("Your starting position is in the center of the map...");
+    }
+
+    @Override
+    public void     levelWon() {
+        System.out.println("CONGRATS!!! You have completed your mission.");
+    }
+
+    @Override
+    public void        gameStats(Character hero) {
+        System.out.println("Your current game stats are as follows:");
+        System.out.println("Your hero " + hero.getName() + " is currently at position x:" + hero.getPosX() + " and y:" + hero.getPosY() );
+    }
+
+    public void        gameLost() {
+        System.out.println("You have lost the mission and have died... Play again to try save the world!");
     }
 
     @Override

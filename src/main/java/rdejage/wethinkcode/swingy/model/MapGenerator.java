@@ -85,10 +85,8 @@ public class MapGenerator {
     public boolean  positionIsValid(Integer x, Integer y) {
         // check that the x and y position is valid
         if((x > 0 && x <= mapSize) && (y > 0 && y <= mapSize)) {
-            System.out.println("Hero position is valid");
             return true;
         }
-        System.out.println("Hero position is outside of map");
         return false;
     }
 }

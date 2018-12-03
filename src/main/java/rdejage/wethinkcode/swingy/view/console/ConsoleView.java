@@ -1,5 +1,6 @@
 package rdejage.wethinkcode.swingy.view.console;
 
+import rdejage.wethinkcode.swingy.model.MapGenerator;
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.characters.Character;
 import rdejage.wethinkcode.swingy.view.WindowManager;
@@ -11,6 +12,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleView extends WindowManager {
+    @Override
+    public void     printMapInfo(MapGenerator map) {
+        System.out.println("Your map size is " + map.getSize());
+    }
+
     @Override
     public Integer getGameOptions() {
         // Welcome the player and start the game
@@ -52,7 +58,7 @@ public class ConsoleView extends WindowManager {
                 if (name.length() <= 1) {
                     System.out.println("Invalid name length... try again");
                 } else {
-                    break;
+                    validInput = true;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input --> You have not entered a string or name");
@@ -144,6 +150,8 @@ public class ConsoleView extends WindowManager {
     public void        gameStats(Character hero) {
         System.out.println("Your current game stats are as follows:");
         System.out.println("Your hero " + hero.getName() + " is currently at position x:" + hero.getPosX() + " and y:" + hero.getPosY() );
+        System.out.println("Level: " + hero.getLevel());
+        System.out.println("Experience: " + hero.getExp());
     }
 
     public void        gameLost() {

@@ -1,11 +1,13 @@
 package rdejage.wethinkcode.swingy.view;
 
 import lombok.Getter;
+import rdejage.wethinkcode.swingy.model.MapGenerator;
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.characters.Character;
 
 @Getter
 public abstract class WindowManager {
+    public abstract void        printMapInfo(MapGenerator map);
     public abstract Integer     getGameOptions();
     public abstract Integer     getDirection();
     public abstract Integer     actionOption();

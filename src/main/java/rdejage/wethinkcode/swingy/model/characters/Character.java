@@ -25,7 +25,9 @@ public class Character {
     protected Integer   level;
     protected Artifact  weapon;
     protected Artifact  artifact;
+    @NotNull
     protected Integer   posX;
+    @NotNull
     protected Integer   posY;
     protected Integer[] previousPos = new Integer[2];
     protected boolean   status;
@@ -101,19 +103,19 @@ public class Character {
         switch (direction) {
             case 1:
                 // move up
-                setPosY(posY - 1);
+                setPosY(this.posY - 1);
                 break;
             case 2:
                 // move right
-                setPosX(posX + 1);
+                setPosX(this.posX + 1);
                 break;
             case 3:
                 // move down
-                setPosY(posY + 1);
+                setPosY(this.posY + 1);
                 break;
             case 4:
                 // move left
-                setPosX(posX - 1);
+                setPosX(this.posX - 1);
                 break;
             default:
                 break;
@@ -161,34 +163,34 @@ public class Character {
         String  weaponName = "none";
         String  artifactName = "none";
         String  artifactType = "none";
-        if(weapon != null) {
-            weaponName = weapon.getArtifactName();
+        if(this.weapon != null) {
+            weaponName = this.weapon.getArtifactName();
         }
 
-        if(artifact != null) {
-            artifactName = artifact.getArtifactName();
-            artifactType = artifact.getBuffType();
+        if(this.artifact != null) {
+            artifactName = this.artifact.getArtifactName();
+            artifactType = this.artifact.getBuffType();
         }
 
         info += this.name + " the " + this.type + "," + this.level + "," + this.exp + "," + weaponName + "," + artifactName + "," + artifactType;
         return info;
     }
 
-    public String getName() { return name; }
+    public String getName() { return this.name; }
 
     public Integer  getAttack() {
         // return attack value based on weapon and base attack
-        if(weapon != null) {
-            return this.attack_base + weapon.getBuffValue();
+        if(this.weapon != null) {
+            return this.attack_base + this.weapon.getBuffValue();
         }
         return this.attack_base;
     }
 
     public Integer  getAromr() {
         // return attack value based on weapon and base attack
-        if(artifact != null) {
-            if(artifact.getBuffType().equals("Armor")) {
-                return this.armor_base + artifact.getBuffValue();
+        if(this.artifact != null) {
+            if(this.artifact.getBuffType().equals("Armor")) {
+                return this.armor_base + this.artifact.getBuffValue();
             }
         }
         return this.armor_base;
@@ -196,9 +198,9 @@ public class Character {
 
     public Integer  getHitPoints() {
         // return attack value based on weapon and base attack
-        if(artifact != null) {
-            if(artifact.getBuffType().equals("Helm")) {
-                return this.hitPoints_base + artifact.getBuffValue();
+        if(this.artifact != null) {
+            if(this.artifact.getBuffType().equals("Helm")) {
+                return this.hitPoints_base + this.artifact.getBuffValue();
             }
 
         }
@@ -209,6 +211,8 @@ public class Character {
         return this.level;
     }
 
+    public Integer getExp() { return exp; }
+
     public Integer  getPosX() {
         return this.posX;
     }
@@ -218,7 +222,7 @@ public class Character {
     }
 
     public boolean  getStatus() {
-        return status;
+        return this.status;
     }
 
     public void     setPosition(Integer mapSize) {
@@ -238,5 +242,12 @@ public class Character {
     private void    setPreviousPos() {
         this.previousPos[0] = this.posX;
         this.previousPos[1] = this.posY;
+    }
+
+    public void    increaseExp() {
+        this.exp += this.level * 500;
+        if(this.exp >= (this.level * 1000 + ((this.level - 1)* 2)* 450)) {
+            this.level += 1;
+        }
     }
 }

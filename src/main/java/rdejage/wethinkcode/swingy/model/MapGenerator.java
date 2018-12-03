@@ -43,6 +43,7 @@ public class MapGenerator {
         }
     }
 
+
     public Villain  isVillain() {
         // Compare hero coordinates to villains coordinates
         for(Villain villain: villains) {

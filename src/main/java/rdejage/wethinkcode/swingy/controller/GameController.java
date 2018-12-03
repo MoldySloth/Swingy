@@ -25,6 +25,7 @@ public class GameController {
         // play the game loop
         hero.setPosition(map.getSize());
         while(hero.getStatus()) {
+            view.printMapInfo(map);
             // get hero position and move
             int direction = view.getDirection();
             hero.moveCharacter(direction);
@@ -44,6 +45,7 @@ public class GameController {
                         if(!villain.getStatus()) {
                             // if the enemy is dead... you have a chance to get an item
                             view.fightWon(hero.name, villain.getVillainType());
+                            hero.increaseExp();
                             map.removeVillain(villain);
                             // drop item based on a percentage drop rate
                             try {
@@ -68,7 +70,6 @@ public class GameController {
                         // Run from the enemy
                         if(hero.run()) {
                             view.runSuccess(hero.name);
-                            break;
                         } else {
                             view.runFailure(hero.name);
                         }
@@ -78,6 +79,7 @@ public class GameController {
                 // Hero has reached the end of the map...
                 view.levelWon();
                 // Update map based on level, play again...
+                map = new MapGenerator(hero);
             }
             // print out game stats
             view.gameStats(this.hero);

@@ -1,1 +1,2 @@
 Timmy the Paladin,1,0,none,none,none
+Jim the Bruser,1,0,none,none,none

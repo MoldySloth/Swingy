@@ -9,9 +9,9 @@ import rdejage.wethinkcode.swingy.model.characters.Villain;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
 public class GameController {
-    private Character    hero = null;
-    private MapGenerator        map = null;
-    private WindowManager       view = null;
+    private Character           hero;
+    private MapGenerator        map;
+    private WindowManager       view;
 
     public  GameController(WindowManager view, MapGenerator map, Character hero) {
         // Init the game with a hero
@@ -80,6 +80,7 @@ public class GameController {
                 view.levelWon();
                 // Update map based on level, play again...
                 map = new MapGenerator(hero);
+                CharacterController.updateHero(hero);
             }
             // print out game stats
             view.gameStats(this.hero);

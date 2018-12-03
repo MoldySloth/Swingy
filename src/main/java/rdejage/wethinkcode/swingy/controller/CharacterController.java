@@ -7,11 +7,13 @@ import java.io.*;
 import java.util.*;
 
 public class CharacterController {
+    private static String     fileName;
     private static List<Character>  heroes = new ArrayList<Character>();
-    // add hero to text file
-    public static void addHero(Character hero, String filename) {
-        // place the hero into the hero.txt file
+
+    // test file
+    public static void  testFile(String filename) {
         File file = new File(filename);
+        fileName = filename;
         if(!file.exists()) {
             try {
                 file.createNewFile();
@@ -20,6 +22,13 @@ public class CharacterController {
                 System.exit(1);
             }
         }
+    }
+
+    // add hero to text file
+    public static void addHero(Character hero, String filename) {
+        // place the hero into the hero.txt file
+        testFile(filename);
+
         // append new hero to file
         try {
             FileWriter fw = new FileWriter(filename, true);
@@ -38,19 +47,11 @@ public class CharacterController {
     public static Integer    readHeroes(String filename) {
         // read the file
         Integer     index = 0;
+        testFile(filename);
+
         try {
             // place the hero into the hero.txt file
-            File file = new File(filename);
-            if(!file.exists()) {
-                try {
-                    file.createNewFile();
-                } catch(IOException e) {
-                    System.out.println("Cannot create file heroes.txt");
-                    System.exit(1);
-                }
-            }
-
-            BufferedReader br = new BufferedReader(new FileReader(filename));
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
             String      line;
             while((line = br.readLine()) != null) {
                 // add heroes to a hero list
@@ -75,10 +76,11 @@ public class CharacterController {
                 index++;
             }
         } catch (IOException e) {
-            System.out.println("Cannot load heroes from file: " + filename);
+            System.out.println("Cannot load heroes from file: " + fileName);
         }
+
         if(index == 0) {
-            System.out.println("Sorry your the file " + filename + " is empty, please create a hero.");
+            System.out.println("Sorry your the file " + fileName + " is empty, please create a hero.");
         }
         return index;
     }
@@ -95,5 +97,11 @@ public class CharacterController {
     }
 
     // update a hero in the text file
-
+    public static void          updateHero(Character hero) {
+        for(Character next: heroes) {
+            if(next.getName().equals(hero.getName())) {
+                heroes.add(heroes.indexOf(next), hero);
+            }
+        }
+    }
 }

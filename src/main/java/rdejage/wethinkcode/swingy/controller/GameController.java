@@ -37,15 +37,17 @@ public class GameController {
                 Villain villain = map.isVillain();
                 if(villain != null) {
                     // print out villain and villain stats
-                    System.out.println("You have encountered an enemy: " + villain.getVillainType());
+                    view.villainFound();
                     view.printInfo(villain.getInfo());
                     // give options to fight or run
                     Integer     action = view.actionOption();
                     if(action == 1) {
                         // Fight the enemy
-                        map.fightVillain();
-                        if(villain.getStatus()) {
+                        map.fightVillain(view, villain);
+                        if(!villain.getStatus()) {
                             // if the enemy is dead... you have a chance to get an item
+                            view.fightWon(hero.name, villain.getVillainType());
+                            map.removeVillain(villain);
                             // drop item based on a percentage drop rate
                             try {
                                 Artifact item = ArtifactFactory.buildArtifact();
@@ -60,13 +62,18 @@ public class GameController {
                             } catch (IllegalArgumentException e) {
                                 System.out.println("Map Error: Could not drop item");
                             }
+                        } else if (!hero.getStatus()) {
+                            // hero has died... end of game
+                            view.heroDeath();
+                            break;
                         }
                     } else if(action == 2) {
                         // Run from the enemy
                         if(hero.run()) {
-                            System.out.println("You have successfully run from the enemy and landed back in your previous position");
+                            view.runSuccess(hero.name);
+                            break;
                         } else {
-                            System.out.println("You could not run from the enemy");
+                            view.runFailure(hero.name);
                         }
                     }
                 }

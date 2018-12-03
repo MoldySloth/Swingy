@@ -214,4 +214,45 @@ public class ConsoleView extends WindowManager {
 
         return option;
     }
+
+    @Override
+    public void     fightStart(String heroName, String villainType) {
+        System.out.println(heroName + " has started a battle with a " + villainType);
+    }
+
+    @Override
+    public void     fightWon(String heroName, String villainType) {
+        System.out.println(heroName + " has won the battle with " + villainType);
+    }
+
+    @Override
+    public void     heroTakesDamage(Integer value) {
+        System.out.println("Your hero has taken damage and is on " + value + " hit points.");
+    }
+
+
+    @Override
+    public void     heroDeath() {
+        System.out.println("Your hero has died... YOU LOST THE MISSION");
+    }
+
+    @Override
+    public void     runSuccess(String heroName) {
+        System.out.println(heroName + " has successfully run from the enemy and landed back in at their previous position");
+    }
+
+    @Override
+    public void     runFailure(String heroName) {
+        System.out.println(heroName + " was not able to run from the enemy and will have to fight it");
+    }
+
+    @Override
+    public void     villainFound() {
+        System.out.println("You have encountered a villain on your mission...");
+    }
+
+    @Override
+    public void     villainTakesDamage(String villainName, Integer value) {
+        System.out.println(villainName + " has taken damage and is on " + value + " hit points.");
+    }
 }

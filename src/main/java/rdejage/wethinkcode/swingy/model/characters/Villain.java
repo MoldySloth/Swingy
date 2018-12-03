@@ -1,6 +1,5 @@
 package rdejage.wethinkcode.swingy.model.characters;
 
-import javax.validation.constraints.NegativeOrZero;
 import javax.validation.constraints.NotNull;
 
 public class Villain {
@@ -49,19 +48,29 @@ public class Villain {
         return info;
     }
 
-    public void     takeDamage(Integer damage) {
+    public boolean  takesDamage(Integer damage) {
         // use armor as a buff for damage
         damage -= armor;
         if(damage >= hitPoints) {
             // This villain dies
             this.hitPoints = 0;
+            this.status = false;
+            return false;
         } else {
             // villain takes damage update armor and hitPoints
             this.hitPoints -= damage;
+            armor -= 25;
+            return true;
         }
     }
 
     public boolean getStatus() {
         return status;
     }
+
+    public Integer getAttack() { return attack; }
+
+    public Integer getArmor() { return armor; }
+
+    public Integer getHitPoints() { return hitPoints; }
 }

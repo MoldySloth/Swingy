@@ -3,6 +3,7 @@ package rdejage.wethinkcode.swingy.model;
 import rdejage.wethinkcode.swingy.model.characters.Character;
 import rdejage.wethinkcode.swingy.model.characters.Villain;
 import rdejage.wethinkcode.swingy.model.characters.VillainFactory;
+import rdejage.wethinkcode.swingy.view.WindowManager;
 
 import java.util.*;
 
@@ -52,10 +53,25 @@ public class MapGenerator {
         return null;
     }
 
-    public void     fightVillain() {
-        Villain     villain = isVillain();
-        // hero attacks villain...
-        hero.fight(villain);
+    public void     fightVillain(WindowManager view, Villain villain) {
+        // Simulate a fight with the villain
+        view.fightStart(hero.name, villain.getVillainType());
+        while(villain.getStatus() && hero.getStatus()) {
+            boolean     villainTakesDamage = villain.takesDamage(hero.getAttack());
+            if(villainTakesDamage) {
+                view.villainTakesDamage(villain.getVillainType(), villain.getHitPoints());
+            }
+            if(villain.getStatus()) {
+                boolean     heroTakesDamage = hero.takesDamage(villain.getAttack());
+                if(heroTakesDamage) {
+                    view.heroTakesDamage(hero.getHitPoints());
+                }
+            }
+        }
+    }
+
+    public void     removeVillain(Villain villain) {
+        villains.remove(villain);
     }
 
     public Integer  getMapSize(Integer level) {

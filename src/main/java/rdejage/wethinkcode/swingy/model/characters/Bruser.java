@@ -1,7 +1,5 @@
 package rdejage.wethinkcode.swingy.model.characters;
 
-import javax.validation.constraints.NotNull;
-
 public class Bruser extends Character {
     public Bruser(String name) {
         // save as a character

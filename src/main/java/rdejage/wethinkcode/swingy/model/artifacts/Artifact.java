@@ -13,7 +13,7 @@ public class Artifact {
         return buffType;
     }
 
-    public String   getArtifactName() {
-        return this.getArtifactName();
-    }
+    public String   getArtifactName() { return this.getArtifactName(); }
+
+    public Integer getBuffValue() { return buffValue; }
 }

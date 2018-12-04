@@ -30,7 +30,7 @@ public class App {
             } else if (args[0].equals("console")) {
                 // if args = console then use console
                 System.out.println(args[0]);
-//                view = new ConsoleView();
+                view = new ConsoleView();
             } else {
                 // exit with error
                 System.out.println("Command line argument error: Incorrect argument");

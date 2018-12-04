@@ -11,39 +11,52 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ConsoleView {
+public class ConsoleView implements WindowManager {
+    // Console colors
+    String      colorRed = "\033[31;1m";
+    String      colorYellow = "\033[33m";
+
+    String      endColor = "\33[0m";
+
 //    @Override
 //    public void     printMapInfo(MapGenerator map) {
 //        System.out.println("Your map size is " + map.getSize());
 //    }
-//
-//    @Override
-//    public Integer getGameOptions() {
-//        // Welcome the player and start the game
-//        System.out.println("Welcome to the game");
-//
-//        boolean     validInput = false;
-//        int         option = 0;
-//        while(!validInput) {
-//            try {
-//                Scanner     scanner = new Scanner(System.in);
-//                System.out.println("Select an option to begin your adventure...");
-//                System.out.println("1. Create a new hero");
-//                System.out.println("2. Load an existing hero");
-//
-//                option = scanner.nextInt();
-//                if(option < 1 || option > 2) {
-//                    System.out.println("Invalid input");
-//                } else if(option == 1 || option == 2) {
-//                    validInput = true;
-//                }
-//            } catch (InputMismatchException e) {
-//                System.out.println("Invalid input --> You have not entered a number");
-//            }
-//        }
-//
-//        return option;
-//    }
+
+    private void prettyLine() {
+        System.out.println(colorYellow + "--------------------------------------------------" + endColor);
+    }
+
+    public Integer      startScreen() {
+        // Welcome the player and start the game
+        prettyLine();
+        System.out.println(colorRed + "WELCOME TO SWINGY");
+        System.out.println("This adventure game will test you as a hero");
+        System.out.println("See if you can battle villains and level up!");
+        prettyLine();
+
+        boolean     validInput = false;
+        int         option = 0;
+        while(!validInput) {
+            try {
+                Scanner     scanner = new Scanner(System.in);
+                System.out.println("Select an option to begin your adventure...");
+                System.out.println("1. Create a new hero");
+                System.out.println("2. Load an existing hero");
+
+                option = scanner.nextInt();
+                if(option < 1 || option > 2) {
+                    System.out.println("Invalid input");
+                } else if(option == 1 || option == 2) {
+                    validInput = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a number");
+            }
+        }
+
+        return option;
+    }
 //
 //    @Override
 //    public String   heroName() {

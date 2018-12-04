@@ -16,10 +16,10 @@ public class App {
         System.out.println("App is working");
 
 //        GameController          game = null;
-//        WindowManager           view = null;
+        WindowManager           view = null;
 //        Character               hero = null;
 //        MapGenerator            map = null;
-        GUI                     view = null;
+//        GUI                     view = null;
 
         // If there are arguments
         if (args.length > 0) {
@@ -38,7 +38,7 @@ public class App {
             }
 
             // Get options from view to use an old hero or create a new one
-            int option = view.getGameOptions();
+            int option = view.startScreen();
 //            if(option == 2) {
                 System.out.println("Your option was " + option);
 //                // Use an old hero from file, check if heroes exist

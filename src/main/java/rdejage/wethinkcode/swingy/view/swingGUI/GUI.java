@@ -8,7 +8,7 @@ import rdejage.wethinkcode.swingy.view.WindowManager;
 import javax.swing.*;
 import java.awt.*;
 
-public class GUI extends JFrame {
+public class GUI extends JFrame implements WindowManager{
     // swing container
     private JPanel      panelContainer = new JPanel();
 
@@ -23,6 +23,12 @@ public class GUI extends JFrame {
         setLocationRelativeTo(null); // places window in center of screen
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+//        addComponents(this);
+//        startScreen(this);
+
+    }
+
+    public Integer     startScreen() {
         // add button to panel
         panelContainer.add(testButton);
 
@@ -39,13 +45,13 @@ public class GUI extends JFrame {
         // adding components to frame
         add(BorderLayout.SOUTH, textPanel);
         add(BorderLayout.CENTER, panelContainer);
-
         this.setVisible(true);
-    }
-
-    public Integer     getGameOptions() {
         return 0;
     }
+
+//    private static void     addComponents(WindowManager win) {
+//
+//    }
 
 
 

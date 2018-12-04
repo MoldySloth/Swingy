@@ -5,8 +5,9 @@ import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.characters.Character;
 
 public interface WindowManager {
+    Integer     startScreen();
 //    void        printMapInfo(MapGenerator map);
-    Integer     getGameOptions();
+//    Integer     getGameOptions();
 //    Integer     getDirection();
 //    Integer     actionOption();
 //

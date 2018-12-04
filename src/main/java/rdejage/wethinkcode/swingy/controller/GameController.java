@@ -80,7 +80,7 @@ public class GameController {
                 view.levelWon();
                 // Update map based on level, play again...
                 map = new MapGenerator(hero);
-                CharacterController.updateHero(hero);
+                CharacterController.updateHero();
             }
             // print out game stats
             view.gameStats(this.hero);

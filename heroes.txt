@@ -1,2 +1,3 @@
-Timmy the Paladin,1,0,none,none,none
 Jim the Bruser,1,0,none,none,none
+Geff the Paladin,2,1000,none,Heal of Water,Armor
+Larry the Slayer,1,0,none,none,none

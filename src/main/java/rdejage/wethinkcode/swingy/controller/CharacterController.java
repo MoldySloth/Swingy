@@ -24,23 +24,26 @@ public class CharacterController {
         }
     }
 
-    // add hero to text file
-    public static void addHero(Character hero, String filename) {
-        // place the hero into the hero.txt file
-        testFile(filename);
-
-        // append new hero to file
+    public static void writeLine(String line) {
         try {
-            FileWriter fw = new FileWriter(filename, true);
+            FileWriter fw = new FileWriter(fileName, true);
             BufferedWriter bw = new BufferedWriter(fw);
-            String          heroInfo = hero.getInfo();
-            bw.write(heroInfo);
+            bw.write(line);
             bw.newLine();
             bw.flush();
         } catch (IOException e) {
             System.out.println("Cannot write to file heroes.txt");
             System.exit(1);
         }
+    }
+
+    // add hero to text file
+    public static void addHero(Character hero, String filename) {
+        // place the hero into the hero.txt file
+        testFile(filename);
+
+        // append new hero to file
+        writeLine(hero.getInfo());
     }
 
     // get a hero from the text file
@@ -97,11 +100,15 @@ public class CharacterController {
     }
 
     // update a hero in the text file
-    public static void          updateHero(Character hero) {
+    public static void          updateHero() {
+        // clear the file
+        File file = new File(fileName);
+        file.delete();
+
+        System.out.println("Updating hero...");
         for(Character next: heroes) {
-            if(next.getName().equals(hero.getName())) {
-                heroes.add(heroes.indexOf(next), hero);
-            }
+            // append new heroes to file
+            writeLine(next.getInfo());
         }
     }
 }

@@ -55,20 +55,20 @@ public class MapGenerator {
     }
 
     public void     fightVillain(WindowManager view, Villain villain) {
-        // Simulate a fight with the villain
-        view.fightStart(hero.name, villain.getVillainType());
-        while(villain.getStatus() && hero.getStatus()) {
-            boolean     villainTakesDamage = villain.takesDamage(hero.getAttack());
-            if(villainTakesDamage) {
-                view.villainTakesDamage(villain.getVillainType(), villain.getHitPoints());
-            }
-            if(villain.getStatus()) {
-                boolean     heroTakesDamage = hero.takesDamage(villain.getAttack());
-                if(heroTakesDamage) {
-                    view.heroTakesDamage(hero.getHitPoints());
-                }
-            }
-        }
+//        // Simulate a fight with the villain
+//        view.fightStart(hero.name, villain.getVillainType());
+//        while(villain.getStatus() && hero.getStatus()) {
+//            boolean     villainTakesDamage = villain.takesDamage(hero.getAttack());
+//            if(villainTakesDamage) {
+//                view.villainTakesDamage(villain.getVillainType(), villain.getHitPoints());
+//            }
+//            if(villain.getStatus()) {
+//                boolean     heroTakesDamage = hero.takesDamage(villain.getAttack());
+//                if(heroTakesDamage) {
+//                    view.heroTakesDamage(hero.getHitPoints());
+//                }
+//            }
+//        }
     }
 
     public void     removeVillain(Villain villain) {

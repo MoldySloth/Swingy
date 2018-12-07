@@ -6,6 +6,7 @@ import rdejage.wethinkcode.swingy.model.characters.Character;
 
 public interface WindowManager {
     Integer     startScreen();
+    Character   newHeroScreen();
 //    void        printMapInfo(MapGenerator map);
 //    Integer     getGameOptions();
 //    Integer     getDirection();

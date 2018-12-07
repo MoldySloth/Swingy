@@ -17,7 +17,7 @@ public class App {
 
 //        GameController          game = null;
         WindowManager           view = null;
-//        Character               hero = null;
+        Character               hero = null;
 //        MapGenerator            map = null;
 //        GUI                     view = null;
 
@@ -39,9 +39,9 @@ public class App {
 
             // Get options from view to use an old hero or create a new one
             int option = view.startScreen();
-//            if(option == 2) {
-                System.out.println("Your option was " + option);
-//                // Use an old hero from file, check if heroes exist
+            System.out.println("Your option was " + option);
+            if(option == 2) {
+                // Use an old hero from file, check if heroes exist
 //                Integer     heroes = CharacterController.readHeroes(fileName);
 //                if(heroes > 0) {
 //                    Integer     heroIndex = view.loadHeroes(fileName);
@@ -50,17 +50,13 @@ public class App {
 //                } else {
 //                    option = 1;
 //                }
-//            }
-//
-//            if(option == 1) {
-//                // Create a new hero
-//                String      name = view.heroName();
-//                Integer     heroClass = view.heroClass();
-//                hero = CharacterFactory.newCharacter(name, heroClass);
-//
-//                // Add hero to the hero.txt file
-//                CharacterController.addHero(hero, fileName);
-//            }
+            }
+
+            if(option == 1) {
+                hero = view.newHeroScreen();
+                // Add hero to the hero.txt file
+                CharacterController.addHero(hero, fileName);
+            }
 //
 //            // Start the game
 //            if(hero != null) {

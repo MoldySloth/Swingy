@@ -3,6 +3,7 @@ package rdejage.wethinkcode.swingy.view.console;
 import rdejage.wethinkcode.swingy.model.MapGenerator;
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.characters.Character;
+import rdejage.wethinkcode.swingy.model.characters.CharacterFactory;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
 import java.io.BufferedReader;
@@ -57,58 +58,65 @@ public class ConsoleView implements WindowManager {
 
         return option;
     }
-//
-//    @Override
-//    public String   heroName() {
-//        // Function to get the hero name input from the player
-//        System.out.println("Please enter a name for your Hero:");
-//        String  name = "";
-//        boolean     validInput = false;
-//        while(!validInput) {
-//            try {
-//                Scanner scanner = new Scanner(System.in);
-//                name = scanner.nextLine();
-//                if (name.length() <= 1) {
-//                    System.out.println("Invalid name length... try again");
-//                } else {
-//                    validInput = true;
-//                }
-//            } catch (InputMismatchException e) {
-//                System.out.println("Invalid input --> You have not entered a string or name");
-//            }
-//        }
-//        return name;
-//    }
-//
-//    @Override
-//    public Integer heroClass() {
-//        // Function to get the hero class input from the player
-//        System.out.println("Please select a hero class:");
-//        System.out.println("* this is what gives your hero their unique qualities.");
-//
-//        boolean     validInput = false;
-//        int         option = 0;
-//        while(!validInput) {
-//            try {
-//                Scanner     scanner = new Scanner(System.in);
-//                System.out.println("1. Paladin");
-//                System.out.println("2. Bruser");
-//                System.out.println("3. Necromancer");
-//                System.out.println("4. Slayer");
-//
-//                option = scanner.nextInt();
-//                if(option < 1 || option > 4) {
-//                    System.out.println("Invalid input");
-//                } else if(option >= 1 || option <= 4) {
-//                    validInput = true;
-//                }
-//            } catch (InputMismatchException e) {
-//                System.out.println("Invalid input --> You have not entered a number");
-//            }
-//        }
-//
-//        return option;
-//    }
+
+    @Override
+    public Character newHeroScreen() {
+        String      name = heroName();
+        Integer     heroClass = heroClass();
+
+        return CharacterFactory.newCharacter(name, heroClass);
+    }
+
+
+    private static String   heroName() {
+        // Function to get the hero name input from the player
+        System.out.println("Please enter a name for your Hero:");
+        String  name = "";
+        boolean     validInput = false;
+        while(!validInput) {
+            try {
+                Scanner scanner = new Scanner(System.in);
+                name = scanner.nextLine();
+                if (name.length() <= 1) {
+                    System.out.println("Invalid name length... try again");
+                } else {
+                    validInput = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a string or name");
+            }
+        }
+        return name;
+    }
+
+    private static Integer heroClass() {
+        // Function to get the hero class input from the player
+        System.out.println("Please select a hero class:");
+        System.out.println("* this is what gives your hero their unique qualities.");
+
+        boolean     validInput = false;
+        int         option = 0;
+        while(!validInput) {
+            try {
+                Scanner     scanner = new Scanner(System.in);
+                System.out.println("1. Paladin");
+                System.out.println("2. Bruser");
+                System.out.println("3. Necromancer");
+                System.out.println("4. Slayer");
+
+                option = scanner.nextInt();
+                if(option < 1 || option > 4) {
+                    System.out.println("Invalid input");
+                } else if(option >= 1 || option <= 4) {
+                    validInput = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a number");
+            }
+        }
+
+        return option;
+    }
 //
 //    @Override
 //    public Integer     loadHeroes(String fileName) {

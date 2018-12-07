@@ -4,6 +4,7 @@ import rdejage.wethinkcode.swingy.model.MapGenerator;
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.characters.Character;
 import rdejage.wethinkcode.swingy.model.characters.CharacterFactory;
+import rdejage.wethinkcode.swingy.model.characters.Villain;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
 import java.io.BufferedReader;
@@ -117,43 +118,58 @@ public class ConsoleView implements WindowManager {
 
         return option;
     }
-//
+
+    @Override
+    public Integer     loadHeroScreen(String fileName) {
+        // Choose an existing hero from file
+        boolean     validInput = false;
+        int         option = 0;
+        while(!validInput) {
+            try {
+                System.out.println("Here are some existing heroes, select one to continue");
+                Scanner     scanner = new Scanner(System.in);
+                // read the file
+                BufferedReader br = new BufferedReader(new FileReader(fileName));
+                String      line;
+                Integer     index = 1;
+                while((line = br.readLine()) != null) {
+                    System.out.println(index + ". " + line);
+                    index++;
+                }
+
+                option = scanner.nextInt();
+                if(option < 1 || option > index - 1) {
+                    System.out.println("Invalid input");
+                } else if(option >= 1 && option <= index - 1) {
+                    validInput = true;
+                }
+            } catch (IOException | InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a number");
+            }
+        }
+        return option;
+    }
+
+    public void     startGame(Character hero) {
+        prettyLine();
+        System.out.println(colorRed + "Your mission as a hero is to move to the edge of the map...");
+        System.out.println("Your starting position is in the center of the map.");
+        System.out.println("Good luck " + hero.getName() + endColor);
+        prettyLine();
+        prettyLine();
+    }
+
 //    @Override
-//    public Integer     loadHeroes(String fileName) {
-//        // Choose an existing hero from file
-//        System.out.println("Here are some existing heroes, choose one to continue");
+//    public void     gameScreen(Character hero, MapGenerator map) {
 //
-//        boolean     validInput = false;
-//        int         option = 0;
-//        while(!validInput) {
-//            try {
-//                Scanner     scanner = new Scanner(System.in);
-//                // read the file
-//                BufferedReader br = new BufferedReader(new FileReader(fileName));
-//                String      line;
-//                Integer     index = 1;
-//                while((line = br.readLine()) != null) {
-//                    System.out.println(index + ". " + line);
-//                    index++;
-//                }
 //
-//                option = scanner.nextInt();
-//                if(option < 1 || option > index - 1) {
-//                    System.out.println("Invalid input");
-//                } else if(option >= 1 && option <= index - 1) {
-//                    validInput = true;
-//                }
-//            } catch (IOException | InputMismatchException e) {
-//                System.out.println("Invalid input --> You have not entered a number");
-//            }
-//        }
-//        return option;
+//
+//
 //    }
-//
-//    @Override
-//    public void     printInfo(String info) {
-//        System.out.println(info);
-//    }
+
+    private void     printInfo(String info) {
+        System.out.println(info);
+    }
 //
 //    @Override
 //    public void     startGame(String info) {

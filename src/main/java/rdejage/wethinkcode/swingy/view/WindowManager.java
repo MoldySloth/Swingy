@@ -1,5 +1,6 @@
 package rdejage.wethinkcode.swingy.view;
 
+import org.omg.PortableInterceptor.INACTIVE;
 import rdejage.wethinkcode.swingy.model.MapGenerator;
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.characters.Character;
@@ -7,6 +8,9 @@ import rdejage.wethinkcode.swingy.model.characters.Character;
 public interface WindowManager {
     Integer     startScreen();
     Character   newHeroScreen();
+    Integer     loadHeroScreen(String fileName);
+    void        startGame(Character hero);
+//    void        gameScreen(Character hero, MapGenerator map);
 //    void        printMapInfo(MapGenerator map);
 //    Integer     getGameOptions();
 //    Integer     getDirection();

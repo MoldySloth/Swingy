@@ -15,10 +15,10 @@ public class App {
     public static void main(String[] args) {
         System.out.println("App is working");
 
-//        GameController          game = null;
+        GameController          game = null;
         WindowManager           view = null;
         Character               hero = null;
-//        MapGenerator            map = null;
+        MapGenerator            map = null;
 //        GUI                     view = null;
 
         // If there are arguments
@@ -42,31 +42,34 @@ public class App {
             System.out.println("Your option was " + option);
             if(option == 2) {
                 // Use an old hero from file, check if heroes exist
-//                Integer     heroes = CharacterController.readHeroes(fileName);
-//                if(heroes > 0) {
-//                    Integer     heroIndex = view.loadHeroes(fileName);
-//                    System.out.println("You have chosen hero number " + heroIndex);
-//                    hero = CharacterController.getHero(heroIndex);
-//                } else {
-//                    option = 1;
-//                }
+                Integer     heroes = CharacterController.readHeroes(fileName);
+                if(heroes > 0) {
+                    Integer     heroIndex = view.loadHeroScreen(fileName);
+                    System.out.println("You have chosen hero number " + heroIndex);
+                    hero = CharacterController.getHero(heroIndex);
+                } else {
+                    option = 1;
+                }
             }
 
             if(option == 1) {
                 hero = view.newHeroScreen();
                 // Add hero to the hero.txt file
-                CharacterController.addHero(hero, fileName);
+                if( hero != null) {
+                    CharacterController.addHero(hero, fileName);
+                } else {
+                    System.out.println("New Hero Error: Could not create hero.");
+                }
+
             }
-//
-//            // Start the game
-//            if(hero != null) {
-//                // Print out hero info
-//                view.printInfo(hero.getInfo());
-//                // Generate a map based on hero stats
-//                map = new MapGenerator(hero);
-//                game = new GameController(view, map, hero);
-//                game.start();
-//            }
+
+            // Start the game
+            if(hero != null) {
+                // Generate a map based on hero stats
+                map = new MapGenerator(hero);
+                game = new GameController(view, map, hero);
+                game.start();
+            }
         } else {
             // exit with error
             System.out.println("Command line argument error: Incorrect number of arguments");

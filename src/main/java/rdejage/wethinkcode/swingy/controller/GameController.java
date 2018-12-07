@@ -21,15 +21,16 @@ public class GameController {
     }
 
     public void     start() {
-//        view.startGame(hero.getInfo());
-//        // play the game loop
-//        hero.setPosition(map.getSize());
+        // play the game loop
+        view.startGame(hero);
+        hero.setPosition(map.getSize());
 //        while(hero.getStatus()) {
+//            view.gameScreen(hero, map);
 //            view.printMapInfo(map);
-//            // get hero position and move
+            // get hero position and move
 //            int direction = view.getDirection();
 //            hero.moveCharacter(direction);
-//            // check hero position on the map is still valid
+            // check hero position on the map is still valid
 //            if(map.positionIsValid(hero.getPosX(), hero.getPosY())) {
 //                // check to see if there is an enemy
 //                Villain villain = map.isVillain();

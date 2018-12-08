@@ -10,7 +10,7 @@ public interface WindowManager {
     Character   newHeroScreen();
     Integer     loadHeroScreen(String fileName);
     void        startGame(Character hero);
-//    void        gameScreen(Character hero, MapGenerator map);
+    void        gameScreen(Character hero, MapGenerator map);
 //    void        printMapInfo(MapGenerator map);
 //    Integer     getGameOptions();
 //    Integer     getDirection();

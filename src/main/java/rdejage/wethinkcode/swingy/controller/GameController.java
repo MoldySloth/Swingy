@@ -24,9 +24,8 @@ public class GameController {
         // play the game loop
         view.startGame(hero);
         hero.setPosition(map.getSize());
-//        while(hero.getStatus()) {
-//            view.gameScreen(hero, map);
-//            view.printMapInfo(map);
+        while(hero.getStatus()) {
+            view.gameScreen(hero, map);
             // get hero position and move
 //            int direction = view.getDirection();
 //            hero.moveCharacter(direction);
@@ -86,7 +85,7 @@ public class GameController {
 //            view.gameStats(this.hero);
 //            // update player
 //            CharacterController.updateHero();
-//        }
+        }
 //        view.gameLost();
     }
 }

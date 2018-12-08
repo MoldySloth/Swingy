@@ -126,7 +126,9 @@ public class ConsoleView implements WindowManager {
         int         option = 0;
         while(!validInput) {
             try {
-                System.out.println("Here are some existing heroes, select one to continue");
+                prettyLine();
+                prettyLine();
+                System.out.println(colorRed + "Here are some existing heroes, select one to continue" + endColor);
                 Scanner     scanner = new Scanner(System.in);
                 // read the file
                 BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -159,13 +161,13 @@ public class ConsoleView implements WindowManager {
         prettyLine();
     }
 
-//    @Override
-//    public void     gameScreen(Character hero, MapGenerator map) {
-//
-//
-//
-//
-//    }
+    @Override
+    public void     gameScreen(Character hero, MapGenerator map) {
+
+
+
+
+    }
 
     private void     printInfo(String info) {
         System.out.println(info);

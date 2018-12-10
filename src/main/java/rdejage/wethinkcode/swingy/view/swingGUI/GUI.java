@@ -433,7 +433,6 @@ public class GUI extends JFrame implements WindowManager {
         }
 
         panelContainer.removeAll();
-        panelContainer.updateUI();
         return dir;
     }
 
@@ -445,12 +444,12 @@ public class GUI extends JFrame implements WindowManager {
 
         panelContainer.setLayout(new GridLayout(2, 1));
 
-        JPanel      contentPanel = new JPanel(new GridLayout(1, 2, 0, 10));
+        JPanel      contentPanel = new JPanel();
 
         // Villain stats and story text
         String      stats = "";
         stats += "You have encountered a Villain along your path:\n";
-        stats += villain.getInfo();
+//        stats += villain.getInfo();
         JTextArea   story = new JTextArea(stats);
         contentPanel.add(story);
 
@@ -466,8 +465,12 @@ public class GUI extends JFrame implements WindowManager {
         runButton.addActionListener(new ButtonClickListener());
         fightButton.addActionListener(new ButtonClickListener());
 
-        panelContainer.add(fightButton);
-        panelContainer.add(runButton);
+        buttonPanel.add(fightButton);
+        buttonPanel.add(runButton);
+
+        panelContainer.add(contentPanel);
+        panelContainer.add(buttonPanel);
+        panelContainer.updateUI();
 
         while (option == 0) {
             try {
@@ -480,8 +483,7 @@ public class GUI extends JFrame implements WindowManager {
         }
 
         panelContainer.removeAll();
-        panelContainer.updateUI();
-        this.repaint();
+
         return option;
     }
 

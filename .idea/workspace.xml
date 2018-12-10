@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="81330b85-0543-417f-a0ff-89af480dc16f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/CharacterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/CharacterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/WindowManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/console/ConsoleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/console/ConsoleView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/swingGUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/swingGUI/GUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,12 +37,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1192" />
+          <entry key="java" value="1235" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1192" />
+          <entry key="JAVA" value="1235" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -152,8 +148,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/swingGUI/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="106" column="23" lean-forward="true" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="23" />
+            <state relative-caret-position="515">
+              <caret line="430" column="17" lean-forward="true" selection-start-line="430" selection-start-column="17" selection-end-line="430" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#18688#18689#0" expanded="true" />
@@ -245,7 +241,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="2560" />
     <option name="height" value="1440" />
   </component>
@@ -329,7 +325,7 @@
     <property name="SearchEverywhereHistoryKey" value="stat&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544447217137" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544448168081" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -393,18 +389,17 @@
       <workItem from="1543827817013" duration="18881000" />
       <workItem from="1543914305374" duration="14308000" />
       <workItem from="1544176654762" duration="11470000" />
-      <workItem from="1544434514729" duration="8166000" />
+      <workItem from="1544434514729" duration="9099000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131180000" />
+    <option name="totallyTimeSpent" value="132113000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1447" height="1440" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1369" height="1440" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49854013" visible="true" weight="0.21708184" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49854013" visible="true" weight="0.22984175" />
       <window_info id="Structure" order="1" sideWeight="0.50145984" side_tool="true" weight="0.25405845" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -414,13 +409,13 @@
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49252668" weight="0.32919708" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.48042706" visible="true" weight="0.31824818" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.48003015" visible="true" weight="0.31824818" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.4991883" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.519573" side_tool="true" visible="true" weight="0.31824818" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.5199699" side_tool="true" visible="true" weight="0.31824818" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5089286" side_tool="true" weight="0.32919708" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4987695" weight="0.329927" />
@@ -709,8 +704,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/swingGUI/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="106" column="23" lean-forward="true" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="23" />
+        <state relative-caret-position="515">
+          <caret line="430" column="17" lean-forward="true" selection-start-line="430" selection-start-column="17" selection-end-line="430" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#18688#18689#0" expanded="true" />

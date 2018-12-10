@@ -162,7 +162,7 @@ public class ConsoleView implements WindowManager {
     }
 
     @Override
-    public Integer     gameScreen(Character hero, MapGenerator map) {
+    public Integer     gameScreen(Character hero) {
         // Function to get hero movement input from the player
         System.out.println(colorRed +"Your current game stats are as follows:");
         System.out.println("Your hero " + hero.getName() + " is currently at position x:" + hero.getPosX() + " and y:" + hero.getPosY() );
@@ -185,6 +185,35 @@ public class ConsoleView implements WindowManager {
                 if(option < 1 || option > 4) {
                     System.out.println("Invalid input");
                 } else if(option >= 1 || option <= 4) {
+                    validInput = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a number");
+            }
+        }
+
+        return option;
+    }
+
+    @Override
+    public Integer  fightScreen(Character hero, Villain villain) {
+        prettyLine();
+        System.out.println(colorRed +"Your have encountered a villain!");
+
+        // Give game options to the player
+        boolean     validInput = false;
+        int         option = 0;
+        while(!validInput) {
+            try {
+                Scanner     scanner = new Scanner(System.in);
+                System.out.println("Select an action to perform");
+                System.out.println("1. Fight your enemy");
+                System.out.println("2. Run like a coward" + endColor);
+
+                option = scanner.nextInt();
+                if(option < 1 || option > 2) {
+                    System.out.println("Invalid input");
+                } else if(option == 1 || option == 2) {
                     validInput = true;
                 }
             } catch (InputMismatchException e) {

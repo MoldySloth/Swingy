@@ -26,30 +26,31 @@ public class GameController {
         hero.setPosition(map.getSize());
         while(hero.getStatus()) {
             // get hero position and move
-            int direction = view.gameScreen(hero, map);
-//            if(!view.getButtonStatus()) {
-//                try {
-//                    Thread.sleep(1000);
-//                } catch (InterruptedException e) {
-//                    System.out.println("Could not pause game");
-//                }
+//            try {
+//                Thread.sleep(40);
+//            } catch (InterruptedException e) {
+//
 //            }
-            hero.moveCharacter(direction);
-            // check hero position on the map is still valid
-            if(map.positionIsValid(hero.getPosX(), hero.getPosY())) {
-                // check to see if there is an enemy
-                Villain villain = map.isVillain();
-                if(villain != null) {
-//                    // print out villain and villain stats
+            int direction = view.gameScreen(hero);
+            if(direction > 0) {
+                hero.moveCharacter(direction);
+                System.out.println("Moving hero...");
+                // check hero position on the map is still valid
+                if(map.positionIsValid(hero.getPosX(), hero.getPosY())) {
+                    // check to see if there is an enemy
+                    Villain villain = map.isVillain();
+                    if(villain != null) {
+                        // print out villain and villain stats
+                        Integer     action = view.fightScreen(hero, villain);
 //                    view.villainFound();
 //                    view.printInfo(villain.getInfo());
 //                    // give options to fight or run
 //                    Integer     action = view.actionOption();
-//                    if(action == 1) {
-//                        // Fight the enemy
-//                        map.fightVillain(view, villain);
-//                        if(!villain.getStatus()) {
-//                            // if the enemy is dead... you have a chance to get an item
+                        if(action == 1) {
+                            // Fight the enemy
+                            map.fightVillain(view, villain);
+                            if(!villain.getStatus()) {
+                                // if the enemy is dead... you have a chance to get an item
 //                            view.fightWon(hero.name, villain.getVillainType());
 //                            hero.increaseExp();
 //                            map.removeVillain(villain);
@@ -71,22 +72,26 @@ public class GameController {
 //                            // hero has died... end of game
 //                            view.heroDeath();
 //                            break;
-//                        }
-//                    } else if(action == 2) {
-//                        // Run from the enemy
+                            }
+                        } else if(action == 2) {
+                            // Run from the enemy
 //                        if(hero.run()) {
 //                            view.runSuccess(hero.name);
 //                        } else {
 //                            view.runFailure(hero.name);
 //                        }
-//                    }
-                }
-            } else {
-                // Hero has reached the end of the map...
+                        }
+                    } else {
+                        System.out.println("No villain was found...");
+                    }
+                } else {
+                    // Hero has reached the end of the map...
 //                view.levelWon();
-                // Update map based on level, play again...
-                map = new MapGenerator(hero);
+                    // Update map based on level, play again...
+                    map = new MapGenerator(hero);
+                }
             }
+
             // update player
             CharacterController.updateHero();
         }

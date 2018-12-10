@@ -4,13 +4,15 @@ import org.omg.PortableInterceptor.INACTIVE;
 import rdejage.wethinkcode.swingy.model.MapGenerator;
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.characters.Character;
+import rdejage.wethinkcode.swingy.model.characters.Villain;
 
 public interface WindowManager {
     Integer     startScreen();
     Character   newHeroScreen();
     Integer     loadHeroScreen(String fileName);
     void        startGame(Character hero);
-    Integer     gameScreen(Character hero, MapGenerator map);
+    Integer     gameScreen(Character hero);
+    Integer     fightScreen(Character hero, Villain villain);
 
     boolean     getButtonStatus();
 //    void        printMapInfo(MapGenerator map);

@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="81330b85-0543-417f-a0ff-89af480dc16f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/heroes.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/CharacterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/CharacterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/WindowManager.java" afterDir="false" />
@@ -33,16 +31,62 @@
     <expand />
     <select />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="800431764">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.67" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="1192" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="1192" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="2" />
+          <entry key="txt" value="4" />
+          <entry key="xml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="2" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="Swingy" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1235">
-              <caret line="88" column="13" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
+            <state relative-caret-position="420">
+              <caret line="28" selection-start-line="28" selection-start-column="2" selection-end-line="32" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/model/characters/Character.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-211">
+              <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="56" column="48" lean-forward="true" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+            <state relative-caret-position="507">
+              <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -62,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/CharacterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-499">
-              <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+            <state relative-caret-position="1470">
+              <caret line="98" column="35" lean-forward="true" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,10 +116,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/model/characters/Villain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/WindowManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+            <state relative-caret-position="285">
+              <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,27 +139,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/console/ConsoleView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1980">
-              <caret line="197" column="34" selection-start-line="197" selection-start-column="34" selection-end-line="197" selection-end-column="34" />
+            <state relative-caret-position="696">
+              <caret line="210" column="70" selection-start-line="210" selection-start-column="70" selection-end-line="210" selection-end-column="70" />
               <folding>
-                <element signature="e#6066#6067#0" expanded="true" />
-                <element signature="e#6106#6107#0" expanded="true" />
                 <element signature="e#7569#7570#0" expanded="true" />
-                <element signature="e#7597#7598#0" expanded="true" />
+                <element signature="e#7596#7597#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/swingGUI/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="404" column="26" lean-forward="true" selection-start-line="404" selection-start-column="26" selection-end-line="404" selection-end-column="26" />
+            <state relative-caret-position="667">
+              <caret line="106" column="23" lean-forward="true" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#15624#15625#0" expanded="true" />
-                <element signature="e#15652#15653#0" expanded="true" />
+                <element signature="e#18688#18689#0" expanded="true" />
+                <element signature="e#18727#18728#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/main/java/main/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/App.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/NewHero.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/StartGame.java" />
@@ -162,13 +212,20 @@
         <option value="$PROJECT_DIR$/heroes.txt" />
         <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/model/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/CharacterController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/WindowManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/console/ConsoleView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/swingGUI/GUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/CharacterController.java" />
         <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/GameController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/swingGUI/GUI.java" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -188,7 +245,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="2560" />
     <option name="height" value="1440" />
   </component>
@@ -261,35 +318,6 @@
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="characters" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Swingy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Swingy" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="swingy" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Swingy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Swingy" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="swingy" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="console" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Swingy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Swingy" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="swingy" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="swingGUI" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -301,14 +329,14 @@
     <property name="SearchEverywhereHistoryKey" value="stat&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544303699191" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544447217137" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -365,17 +393,18 @@
       <workItem from="1543827817013" duration="18881000" />
       <workItem from="1543914305374" duration="14308000" />
       <workItem from="1544176654762" duration="11470000" />
+      <workItem from="1544434514729" duration="8166000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123014000" />
+    <option name="totallyTimeSpent" value="131180000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="0" width="1274" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1447" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49854013" visible="true" weight="0.25487012" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49854013" visible="true" weight="0.21708184" />
       <window_info id="Structure" order="1" sideWeight="0.50145984" side_tool="true" weight="0.25405845" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -384,14 +413,14 @@
       <window_info id="Favorites" order="6" sideWeight="0.50145984" side_tool="true" weight="0.25405845" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" sideWeight="0.4935065" weight="0.32970297" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.48214287" visible="true" weight="0.3188119" />
+      <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49252668" weight="0.32919708" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.48042706" visible="true" weight="0.31824818" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.4991883" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.51785713" side_tool="true" visible="true" weight="0.3188119" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.519573" side_tool="true" visible="true" weight="0.31824818" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5089286" side_tool="true" weight="0.32919708" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4987695" weight="0.329927" />
@@ -444,6 +473,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -485,13 +517,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/model/characters/Villain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -551,16 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/model/characters/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3206">
-          <caret line="247" column="37" selection-start-line="247" selection-start-column="37" selection-end-line="247" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/model/characters/EvilWoodland.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -589,13 +604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="56" lean-forward="true" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/model/MapGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -620,6 +628,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/heroes.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -627,64 +642,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/console/ConsoleView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/model/characters/Character.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1980">
-          <caret line="197" column="34" selection-start-line="197" selection-start-column="34" selection-end-line="197" selection-end-column="34" />
-          <folding>
-            <element signature="e#6066#6067#0" expanded="true" />
-            <element signature="e#6106#6107#0" expanded="true" />
-            <element signature="e#7569#7570#0" expanded="true" />
-            <element signature="e#7597#7598#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/WindowManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+        <state relative-caret-position="-211">
+          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/CharacterController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-499">
-          <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+        <state relative-caret-position="420">
+          <caret line="28" selection-start-line="28" selection-start-column="2" selection-end-line="32" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/swingGUI/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="404" column="26" lean-forward="true" selection-start-line="404" selection-start-column="26" selection-end-line="404" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#15624#15625#0" expanded="true" />
-            <element signature="e#15652#15653#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="56" column="48" lean-forward="true" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+        <state relative-caret-position="507">
+          <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/GameController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/controller/CharacterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1235">
-          <caret line="88" column="13" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
+        <state relative-caret-position="1470">
+          <caret line="98" column="35" lean-forward="true" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/model/characters/Villain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/WindowManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/console/ConsoleView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="210" column="70" selection-start-line="210" selection-start-column="70" selection-end-line="210" selection-end-column="70" />
+          <folding>
+            <element signature="e#7569#7570#0" expanded="true" />
+            <element signature="e#7596#7597#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/rdejage/wethinkcode/swingy/view/swingGUI/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="106" column="23" lean-forward="true" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#18688#18689#0" expanded="true" />
+            <element signature="e#18727#18728#0" expanded="true" />
           </folding>
         </state>
       </provider>

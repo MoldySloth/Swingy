@@ -42,7 +42,7 @@ public class CharacterController {
         // place the hero into the hero.txt file
         testFile(filename);
         Integer     heroCount = readHeroes(filename);
-        if(heroCount > 0) {
+        if(heroCount >= 0) {
             // append new hero to file
             System.out.println("Creating your hero:\n" + hero.getInfo());
             writeLine(hero.getInfo());
@@ -96,7 +96,7 @@ public class CharacterController {
     public static Character     getHero(Integer index) {
         Character hero = null;
         try {
-            hero = heroes.get(index - 1);
+            hero = heroes.get(index);
         } catch (IllegalArgumentException e) {
             System.out.println("Hero could not be found");
         }

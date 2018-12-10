@@ -4,6 +4,7 @@ import rdejage.wethinkcode.swingy.model.MapGenerator;
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.characters.Character;
 import rdejage.wethinkcode.swingy.model.characters.CharacterFactory;
+import rdejage.wethinkcode.swingy.model.characters.Villain;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
 import javax.swing.*;
@@ -48,8 +49,9 @@ public class GUI extends JFrame implements WindowManager {
         setTitle("SWINGY");
         setSize(1280, 720);
         setResizable(false);
+        setIgnoreRepaint(true);
         setLocationRelativeTo(null); // places window in center of screen
-        setLayout(new GridLayout(3, 1));
+        setLayout(new GridLayout(3, 1, 20, 20));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         headerLabel = new JLabel("", JLabel.CENTER);
@@ -64,6 +66,7 @@ public class GUI extends JFrame implements WindowManager {
         });
 
         panelContainer.setLayout(new FlowLayout());
+        panelContainer.setSize(800, 600);
 
         add(headerLabel);
         add(panelContainer);
@@ -329,14 +332,14 @@ public class GUI extends JFrame implements WindowManager {
     }
 
     @Override
-    public Integer     gameScreen(Character hero, MapGenerator map) {
-        panelContainer.removeAll();
+    public Integer     gameScreen(Character hero) {
+        dir = 0;
         // main game screen and layout
         headerLabel.setText("Your mission level is " + hero.getLevel());
 
-        panelContainer.setLayout(new GridLayout(2, 1));
+        panelContainer.setLayout(new GridLayout(3, 1));
 
-        JPanel      contentPanel = new JPanel(new GridLayout(1, 2));
+        JPanel      contentPanel = new JPanel(new FlowLayout());
 
         // Your stats and story text
         String      stats = "";
@@ -349,57 +352,126 @@ public class GUI extends JFrame implements WindowManager {
 
 
         // choose a direction to move
+        JPanel      directionPanel = new JPanel(new FlowLayout());
         JLabel      directionLabel = new JLabel("Choose a direction");
-        JList       directionList = new JList(directions);
-        directionList.setVisibleRowCount(4);
-        directionList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        directionList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if(!e.getValueIsAdjusting()) {
-                    JList   source = (JList)e.getSource();
-                    String  selected = source.getSelectedValue().toString();
-                    statusLabel.setText("You have selected to move " + selected);
-                    switch(selected) {
-                        case "North":
-                            dir = 1;
-                            break;
-                        case "East":
-                            dir = 2;
-                            break;
-                        case "South":
-                            dir = 3;
-                            break;
-                        case "West":
-                            dir = 4;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-        });
-        contentPanel.add(directionLabel);
-        contentPanel.add(directionLabel);
-        contentPanel.add(new JScrollPane(directionList));
+        JButton     moveNorth = new JButton("North");
+        moveNorth.setActionCommand("North");
+        moveNorth.addActionListener(new ButtonClickListener());
+
+        JButton     moveEast = new JButton("East");
+        moveEast.setActionCommand("East");
+        moveEast.addActionListener(new ButtonClickListener());
+
+        JButton     moveSouth = new JButton("South");
+        moveSouth.setActionCommand("South");
+        moveSouth.addActionListener(new ButtonClickListener());
+
+        JButton     moveWest = new JButton("West");
+        moveWest.setActionCommand("West");
+        moveWest.addActionListener(new ButtonClickListener());
+
+//        JList       directionList = new JList(directions);
+//        directionList.setVisibleRowCount(4);
+//        directionList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//        directionList.addListSelectionListener(new ListSelectionListener() {
+//            @Override
+//            public void valueChanged(ListSelectionEvent e) {
+//                if(!e.getValueIsAdjusting()) {
+//                    JList   source = (JList)e.getSource();
+//                    index = source.getSelectedIndex();
+//                    statusLabel.setText("You have selected to move " + index);
+//                    switch(index) {
+//                        case 0:
+//                            dir = 1;
+//                            break;
+//                        case 1:
+//                            dir = 2;
+//                            break;
+//                        case 2:
+//                            dir = 3;
+//                            break;
+//                        case 3:
+//                            dir = 4;
+//                            break;
+//                        default:
+//                            break;
+//                    }
+//                }
+//            }
+//        });
+        directionPanel.add(directionLabel);
+        directionPanel.add(directionLabel);
+        directionPanel.add(moveNorth);
+        directionPanel.add(moveEast);
+        directionPanel.add(moveSouth);
+        directionPanel.add(moveWest);
+//        directionPanel.add(new JScrollPane(directionList));
 
         panelContainer.add(contentPanel);
+        panelContainer.add(directionPanel);
 
 
-        // start game button
+//        // start game button
+//        JPanel      buttonPanel = new JPanel();
+//        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+//        JButton startGame = new JButton("Move");
+//        startGame.setActionCommand("Move");
+//        startGame.addActionListener(new ButtonClickListener());
+//        buttonPanel.add(startGame);
+
+//        panelContainer.add(buttonPanel);
+        panelContainer.updateUI();
+
+        while (dir == 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                if (dir != 0) {
+                    break;
+                }
+            }
+        }
+
+        panelContainer.removeAll();
+        panelContainer.updateUI();
+        return dir;
+    }
+
+    @Override
+    public Integer     fightScreen(Character hero, Villain villain) {
+        option = 0;
+        // main game screen and layout
+        headerLabel.setText("Your have encountered a villain!");
+
+        panelContainer.setLayout(new GridLayout(2, 1));
+
+        JPanel      contentPanel = new JPanel(new GridLayout(1, 2, 0, 10));
+
+        // Villain stats and story text
+        String      stats = "";
+        stats += "You have encountered a Villain along your path:\n";
+        stats += villain.getInfo();
+        JTextArea   story = new JTextArea(stats);
+        contentPanel.add(story);
+
+        // buttons panel
         JPanel      buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        JButton startGame = new JButton("Move");
-        startGame.setActionCommand("Move");
-        startGame.addActionListener(new ButtonClickListener());
-        buttonPanel.add(startGame);
+        JButton fightButton = new JButton("Fight villain");
+        JButton runButton = new JButton("Run away...");
 
-        panelContainer.add(buttonPanel);
-        panelContainer.updateUI();
+        fightButton.setActionCommand("Fight");
+        runButton.setActionCommand("Run");
+
+        runButton.addActionListener(new ButtonClickListener());
+        fightButton.addActionListener(new ButtonClickListener());
+
+        panelContainer.add(fightButton);
+        panelContainer.add(runButton);
 
         while (option == 0) {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 if (option != 0) {
                     break;
@@ -407,7 +479,10 @@ public class GUI extends JFrame implements WindowManager {
             }
         }
 
-        return dir;
+        panelContainer.removeAll();
+        panelContainer.updateUI();
+        this.repaint();
+        return option;
     }
 
     private class ButtonClickListener implements ActionListener {
@@ -429,17 +504,47 @@ public class GUI extends JFrame implements WindowManager {
                 case "Start":
                     // load a hero
                     statusLabel.setText("You have selected to start the game");
-                    option = 3;
+                    option = 1;
                     break;
                 case "Continue":
                     // load a hero
                     statusLabel.setText("You have selected to continue");
-                    option = 3;
+                    option = 1;
                     break;
                 case "Move":
                     // load a hero
                     statusLabel.setText("You have selected to move your hero");
-                    option = 4;
+                    option = 1;
+                    break;
+                case "Fight":
+                    // load a hero
+                    statusLabel.setText("You are going to fight the enemy");
+                    option = 1;
+                    break;
+                case "Run":
+                    // load a hero
+                    statusLabel.setText("You are going to fight the enemy");
+                    option = 2;
+                    break;
+                case "North":
+                    // load a hero
+                    statusLabel.setText("You are going to fight the enemy");
+                    dir = 1;
+                    break;
+                case "East":
+                    // load a hero
+                    statusLabel.setText("You are going to fight the enemy");
+                    dir = 2;
+                    break;
+                case "South":
+                    // load a hero
+                    statusLabel.setText("You are going to fight the enemy");
+                    dir = 3;
+                    break;
+                case "West":
+                    // load a hero
+                    statusLabel.setText("You are going to fight the enemy");
+                    dir = 4;
                     break;
                 default:
                     break;

@@ -13,6 +13,11 @@ public interface WindowManager {
     void        startGame(Character hero);
     Integer     gameScreen(Character hero);
     Integer     fightScreen(Character hero, Villain villain);
+    void        fightWon(String heroName, String villainName);
+    Integer     itemDrop(Artifact item);
+    void        levelWon();
+    void        gameLost();
+
 
     boolean     getButtonStatus();
 //    void        printMapInfo(MapGenerator map);
@@ -23,7 +28,6 @@ public interface WindowManager {
 //    void        printInfo(String info);
 //    void        startGame(String info);
 //    void        gameLost();
-//    void        levelWon();
 //    void        gameStats(Character hero);
 //
 //    Integer     loadHeroes(String fileName);
@@ -34,8 +38,7 @@ public interface WindowManager {
 //    void        fightStart(String heroName, String villainType);
 //    void        fightWon(String heroName, String villainType);
 //    Integer     chooseItem(Artifact item);
-//    void        runSuccess(String heroName);
-//    void        runFailure(String heroName);
+
 //
 //    void        villainFound();
 //    void        villainTakesDamage(String villainName, Integer value);

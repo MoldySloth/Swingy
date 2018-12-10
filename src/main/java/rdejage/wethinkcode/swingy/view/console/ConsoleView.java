@@ -149,7 +149,7 @@ public class ConsoleView implements WindowManager {
                 System.out.println("Invalid input --> You have not entered a number");
             }
         }
-        return option;
+        return option - 1;
     }
 
     public void     startGame(Character hero) {
@@ -198,7 +198,9 @@ public class ConsoleView implements WindowManager {
     @Override
     public Integer  fightScreen(Character hero, Villain villain) {
         prettyLine();
-        System.out.println(colorRed +"Your have encountered a villain!");
+        System.out.println(colorRed +"Your have encountered a villain!" + endColor);
+        printInfo(villain.getInfo());
+        prettyLine();
 
         // Give game options to the player
         boolean     validInput = false;
@@ -206,7 +208,7 @@ public class ConsoleView implements WindowManager {
         while(!validInput) {
             try {
                 Scanner     scanner = new Scanner(System.in);
-                System.out.println("Select an action to perform");
+                System.out.println(colorRed + "Select an action to perform");
                 System.out.println("1. Fight your enemy");
                 System.out.println("2. Run like a coward" + endColor);
 
@@ -233,11 +235,10 @@ public class ConsoleView implements WindowManager {
         return true;
     }
 
-    //
-//    @Override
-//    public void     levelWon() {
-//        System.out.println("CONGRATS!!! You have completed your mission.");
-//    }
+    @Override
+    public void     levelWon() {
+        System.out.println("CONGRATS!!! You have completed your mission.");
+    }
 //
 //    @Override
 //    public void        gameStats(Character hero) {
@@ -247,105 +248,43 @@ public class ConsoleView implements WindowManager {
 //        System.out.println("Experience: " + hero.getExp());
 //    }
 //
-//    public void        gameLost() {
-//        System.out.println("You have lost the mission and have died... Play again to try save the world!");
-//    }
-//
-//    @Override
-//    public Integer  getDirection() {
-//        // Function to get hero movement input from the player
-//        System.out.println("Please select a direction to move to:");
-//
-//        boolean     validInput = false;
-//        int         option = 0;
-//        while(!validInput) {
-//            try {
-//                Scanner     scanner = new Scanner(System.in);
-//                System.out.println("1. North");
-//                System.out.println("2. East");
-//                System.out.println("3. South");
-//                System.out.println("4. West");
-//
-//                option = scanner.nextInt();
-//                if(option < 1 || option > 4) {
-//                    System.out.println("Invalid input");
-//                } else if(option >= 1 || option <= 4) {
-//                    validInput = true;
-//                }
-//            } catch (InputMismatchException e) {
-//                System.out.println("Invalid input --> You have not entered a number");
-//            }
-//        }
-//
-//        return option;
-//    }
-//
-//
-//    // give options to fight or run
-//    @Override
-//    public Integer  actionOption() {
-//        // Give game options to the player
-//        boolean     validInput = false;
-//        int         option = 0;
-//        while(!validInput) {
-//            try {
-//                Scanner     scanner = new Scanner(System.in);
-//                System.out.println("Select an action to perform");
-//                System.out.println("1. Fight your enemy");
-//                System.out.println("2. Run like a coward");
-//
-//                option = scanner.nextInt();
-//                if(option < 1 || option > 2) {
-//                    System.out.println("Invalid input");
-//                } else if(option == 1 || option == 2) {
-//                    validInput = true;
-//                }
-//            } catch (InputMismatchException e) {
-//                System.out.println("Invalid input --> You have not entered a number");
-//            }
-//        }
-//
-//        return option;
-//    }
-//
-//    // give options to take or leave item
-//    @Override
-//    public Integer  chooseItem(Artifact item) {
-//        // Give game options to the player
-//        boolean     validInput = false;
-//        int         option = 0;
-//        while(!validInput) {
-//            try {
-//                Scanner     scanner = new Scanner(System.in);
-//                // get item info...
-//                System.out.println(item.getArtifactName() + " was dropped during your battle:");
-//                System.out.println("Select an action to perform");
-//                System.out.println("1. Take the item");
-//                System.out.println("2. Leave the item");
-//
-//                option = scanner.nextInt();
-//                if(option < 1 || option > 2) {
-//                    System.out.println("Invalid input");
-//                } else if(option == 1 || option == 2) {
-//                    validInput = true;
-//                }
-//            } catch (InputMismatchException e) {
-//                System.out.println("Invalid input --> You have not entered a number");
-//            }
-//        }
-//
-//        return option;
-//    }
-//
-//    @Override
-//    public void     fightStart(String heroName, String villainType) {
-//        System.out.println(heroName + " has started a battle with a " + villainType);
-//    }
-//
-//    @Override
-//    public void     fightWon(String heroName, String villainType) {
-//        System.out.println(heroName + " has won the battle with " + villainType);
-//    }
+    public void        gameLost() {
+        System.out.println("You have lost the mission and have died... Play again to try save the world!");
+    }
+
+    // give options to take or leave item
+    @Override
+    public Integer  itemDrop(Artifact item) {
+        // Give game options to the player
+        boolean     validInput = false;
+        int         option = 0;
+        while(!validInput) {
+            try {
+                Scanner     scanner = new Scanner(System.in);
+                // get item info...
+                System.out.println(item.getArtifactName() + " was dropped during your battle:");
+                System.out.println("Select an action to perform");
+                System.out.println("1. Take the item");
+                System.out.println("2. Leave the item");
+
+                option = scanner.nextInt();
+                if(option < 1 || option > 2) {
+                    System.out.println("Invalid input");
+                } else if(option == 1 || option == 2) {
+                    validInput = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a number");
+            }
+        }
+
+        return option;
+    }
+
+    @Override
+    public void     fightWon(String heroName, String villainType) {
+        System.out.println(heroName + " has won the battle with " + villainType);
+    }
 //
 //    @Override
 //    public void     heroTakesDamage(Integer value) {

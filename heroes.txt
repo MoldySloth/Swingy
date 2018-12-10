@@ -1,2 +1,4 @@
 mike the Bruser,1,0,none,none,none
 Kevin the Bruser,1,0,none,none,none
+Harry the Necromancer,1,0,none,none,none
+Larry the Bruser,2,2000,none,Pot of Luck,Armor

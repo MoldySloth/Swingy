@@ -7,6 +7,7 @@ import rdejage.wethinkcode.swingy.model.characters.CharacterFactory;
 import rdejage.wethinkcode.swingy.model.characters.Villain;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
+import javax.lang.model.element.NestingKind;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -370,56 +371,15 @@ public class GUI extends JFrame implements WindowManager {
         moveWest.setActionCommand("West");
         moveWest.addActionListener(new ButtonClickListener());
 
-//        JList       directionList = new JList(directions);
-//        directionList.setVisibleRowCount(4);
-//        directionList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//        directionList.addListSelectionListener(new ListSelectionListener() {
-//            @Override
-//            public void valueChanged(ListSelectionEvent e) {
-//                if(!e.getValueIsAdjusting()) {
-//                    JList   source = (JList)e.getSource();
-//                    index = source.getSelectedIndex();
-//                    statusLabel.setText("You have selected to move " + index);
-//                    switch(index) {
-//                        case 0:
-//                            dir = 1;
-//                            break;
-//                        case 1:
-//                            dir = 2;
-//                            break;
-//                        case 2:
-//                            dir = 3;
-//                            break;
-//                        case 3:
-//                            dir = 4;
-//                            break;
-//                        default:
-//                            break;
-//                    }
-//                }
-//            }
-//        });
         directionPanel.add(directionLabel);
         directionPanel.add(directionLabel);
         directionPanel.add(moveNorth);
         directionPanel.add(moveEast);
         directionPanel.add(moveSouth);
         directionPanel.add(moveWest);
-//        directionPanel.add(new JScrollPane(directionList));
 
         panelContainer.add(contentPanel);
         panelContainer.add(directionPanel);
-
-
-//        // start game button
-//        JPanel      buttonPanel = new JPanel();
-//        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-//        JButton startGame = new JButton("Move");
-//        startGame.setActionCommand("Move");
-//        startGame.addActionListener(new ButtonClickListener());
-//        buttonPanel.add(startGame);
-
-//        panelContainer.add(buttonPanel);
         panelContainer.updateUI();
 
         while (dir == 0) {
@@ -449,7 +409,7 @@ public class GUI extends JFrame implements WindowManager {
         // Villain stats and story text
         String      stats = "";
         stats += "You have encountered a Villain along your path:\n";
-//        stats += villain.getInfo();
+        stats += villain.getInfo();
         JTextArea   story = new JTextArea(stats);
         contentPanel.add(story);
 
@@ -485,6 +445,175 @@ public class GUI extends JFrame implements WindowManager {
         panelContainer.removeAll();
 
         return option;
+    }
+
+    @Override
+    public void     fightWon(String heroName, String villainName) {
+        // starting the mission intro
+        headerLabel.setText("CONGRATS! " + heroName + " has won the battle against " + villainName);
+        option = 0;
+        panelContainer.setLayout(new GridLayout(2, 1));
+
+        // Text content
+        JPanel      middlePanel = new JPanel();
+        String      content = "CONGRATS!" + heroName + " has won the battle against" + villainName + "\n";
+        content += "The battle was long and hard... You probably lost some health in the process\n";
+        content += "but you survived to fight another battle\n";
+        content += "\n\nYou might even finish the mission.";
+        JTextArea   story = new JTextArea(content);
+        middlePanel.add(story);
+        panelContainer.add(middlePanel);
+
+        // start game button
+        JPanel      buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JButton continueGame = new JButton("Continue");
+        continueGame.setActionCommand("Continue");
+        continueGame.addActionListener(new ButtonClickListener());
+        buttonPanel.add(continueGame);
+        panelContainer.add(buttonPanel);
+
+        panelContainer.updateUI();
+
+        while (option == 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                if (option != 0) {
+                    break;
+                }
+            }
+        }
+        panelContainer.removeAll();
+    }
+
+    @Override
+    public Integer     itemDrop(Artifact item) {
+        option = 0;
+        // main game screen and layout
+        headerLabel.setText("Your lucky day!");
+
+        panelContainer.setLayout(new GridLayout(2, 1));
+
+        JPanel      contentPanel = new JPanel();
+        // Item stats and story text
+        String      stats = "";
+        stats += item.getArtifactName() + " was dropped during your battle:\n";
+        stats += "Would you like to?\n";
+        stats += "Note: if you already have an item this item will replace the previous one.";
+        JTextArea   story = new JTextArea(stats);
+        contentPanel.add(story);
+
+        // buttons panel
+        JPanel      buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JButton fightButton = new JButton("Take the item");
+        JButton runButton = new JButton("Leave the item");
+
+        fightButton.setActionCommand("Fight");
+        runButton.setActionCommand("Run");
+
+        runButton.addActionListener(new ButtonClickListener());
+        fightButton.addActionListener(new ButtonClickListener());
+
+        buttonPanel.add(fightButton);
+        buttonPanel.add(runButton);
+
+        panelContainer.add(contentPanel);
+        panelContainer.add(buttonPanel);
+        panelContainer.updateUI();
+
+        while (option == 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                if (option != 0) {
+                    break;
+                }
+            }
+        }
+
+        panelContainer.removeAll();
+
+        return option;
+    }
+
+    @Override
+    public void     levelWon() {
+        // starting the mission intro
+        headerLabel.setText("CONGRATS!!! You have completed your mission.");
+        option = 0;
+        panelContainer.setLayout(new GridLayout(2, 1));
+
+        // Text content
+        JPanel      middlePanel = new JPanel();
+        String      content = "CONGRATS!!! You have completed your mission.\n";
+        content += "Your journey will only get harder from here...\n";
+        content += "\n\nMore danger lies ahead";
+        JTextArea   story = new JTextArea(content);
+        middlePanel.add(story);
+        panelContainer.add(middlePanel);
+
+        // start game button
+        JPanel      buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JButton continueGame = new JButton("Continue");
+        continueGame.setActionCommand("Continue");
+        continueGame.addActionListener(new ButtonClickListener());
+        buttonPanel.add(continueGame);
+        panelContainer.add(buttonPanel);
+
+        panelContainer.updateUI();
+
+        while (option == 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                if (option != 0) {
+                    break;
+                }
+            }
+        }
+        panelContainer.removeAll();
+    }
+
+    @Override
+    public void     gameLost() {
+        // starting the mission intro
+        headerLabel.setText("..........     GAME OVER     ..........");
+        option = 0;
+        panelContainer.setLayout(new GridLayout(2, 1));
+
+        // Text content
+        JPanel      middlePanel = new JPanel();
+        String      content = "The earth SHAKES!!!\n";
+        content += "Terror falls upon the land, as evil takes over\n";
+        content += "\n\nKilling all in its path!";
+        JTextArea   story = new JTextArea(content);
+        middlePanel.add(story);
+        panelContainer.add(middlePanel);
+
+        // start game button
+        JPanel      buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JButton continueGame = new JButton("GAME OVER");
+        continueGame.setActionCommand("Continue");
+        continueGame.addActionListener(new ButtonClickListener());
+        buttonPanel.add(continueGame);
+        panelContainer.add(buttonPanel);
+
+        panelContainer.updateUI();
+
+        while (option == 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                if (option != 0) {
+                    break;
+                }
+            }
+        }
+        panelContainer.removeAll();
     }
 
     private class ButtonClickListener implements ActionListener {

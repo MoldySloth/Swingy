@@ -60,7 +60,6 @@ public class App {
                 } else {
                     System.out.println("New Hero Error: Could not create hero.");
                 }
-
             }
 
             // Start the game

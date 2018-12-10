@@ -162,24 +162,49 @@ public class ConsoleView implements WindowManager {
     }
 
     @Override
-    public void     gameScreen(Character hero, MapGenerator map) {
+    public Integer     gameScreen(Character hero, MapGenerator map) {
+        // Function to get hero movement input from the player
+        System.out.println(colorRed +"Your current game stats are as follows:");
+        System.out.println("Your hero " + hero.getName() + " is currently at position x:" + hero.getPosX() + " and y:" + hero.getPosY() );
+        System.out.println("Level: " + hero.getLevel());
+        System.out.println("Experience: " + hero.getExp() + endColor);
+        prettyLine();
+        System.out.println(colorRed + "Please select a direction to move to:" + endColor);
 
+        boolean     validInput = false;
+        int         option = 0;
+        while(!validInput) {
+            try {
+                Scanner     scanner = new Scanner(System.in);
+                System.out.println("1. North");
+                System.out.println("2. East");
+                System.out.println("3. South");
+                System.out.println("4. West");
 
+                option = scanner.nextInt();
+                if(option < 1 || option > 4) {
+                    System.out.println("Invalid input");
+                } else if(option >= 1 || option <= 4) {
+                    validInput = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input --> You have not entered a number");
+            }
+        }
 
-
+        return option;
     }
 
     private void     printInfo(String info) {
         System.out.println(info);
     }
-//
-//    @Override
-//    public void     startGame(String info) {
-//        printInfo(info);
-//        System.out.println("Your mission as a hero is to move to the edge of the map...");
-//        System.out.println("Your starting position is in the center of the map...");
-//    }
-//
+
+    @Override
+    public boolean getButtonStatus() {
+        return true;
+    }
+
+    //
 //    @Override
 //    public void     levelWon() {
 //        System.out.println("CONGRATS!!! You have completed your mission.");

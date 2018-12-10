@@ -7,6 +7,8 @@ import rdejage.wethinkcode.swingy.model.characters.CharacterFactory;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
@@ -14,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -28,11 +31,12 @@ public class GUI extends JFrame implements WindowManager {
     private JLabel      statusLabel;
     private Integer     option;
     private Integer     index;
+    private boolean     buttonPress = false;
 
     // hero variables
     JList   heroTypes;
     private String[]    heroClasses = {"Paladin", "Bruser", "Necromancer", "Slayer"};
-    private Integer     heroClass = 0;
+    private Integer     heroClass;
     private JTextField  tf;
     private String      name = "";
     private String[]    directions = {"North", "East", "South", "West"};
@@ -113,9 +117,21 @@ public class GUI extends JFrame implements WindowManager {
         JPanel      topPanel = new JPanel();
         JLabel      nameLabel = new JLabel("Enter your hero name:");
         tf = new JTextField(10);
-        tf.addActionListener(new ActionListener() {
+        tf.getDocument().addDocumentListener(new DocumentListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void insertUpdate(DocumentEvent e) {
+                statusLabel.setText("You have selected " + tf.getText() + " as your hero name");
+                name = tf.getText();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                statusLabel.setText("You have selected " + tf.getText() + " as your hero name");
+                name = tf.getText();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
                 statusLabel.setText("You have selected " + tf.getText() + " as your hero name");
                 name = tf.getText();
             }
@@ -188,6 +204,7 @@ public class GUI extends JFrame implements WindowManager {
 
         panelContainer.removeAll();
 
+        System.out.println("Your name is " + name);
         return CharacterFactory.newCharacter(name, heroClass);
     }
 
@@ -255,11 +272,14 @@ public class GUI extends JFrame implements WindowManager {
         panelContainer.add(buttonPanel);
         panelContainer.updateUI();
 
+        buttonPress = false;
+
         while (option == 0) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 if (option != 0) {
+                    buttonPress = true;
                     break;
                 }
             }
@@ -274,6 +294,7 @@ public class GUI extends JFrame implements WindowManager {
     public void     startGame(Character hero) {
         // starting the mission intro
         headerLabel.setText(".................................");
+        option = 0;
         String   content = "Your mission as a hero is to move to the edge of the map...\nYour starting position is in the center of the map.\nGood luck " + hero.getName() + "!";
 
         panelContainer.setLayout(new GridLayout(2, 1));
@@ -295,19 +316,39 @@ public class GUI extends JFrame implements WindowManager {
 
         panelContainer.updateUI();
 
-        this.repaint();
+        while (option == 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                if (option != 0) {
+                    break;
+                }
+            }
+        }
+        panelContainer.removeAll();
     }
 
     @Override
-    public void     gameScreen(Character hero, MapGenerator map) {
+    public Integer     gameScreen(Character hero, MapGenerator map) {
+        panelContainer.removeAll();
         // main game screen and layout
         headerLabel.setText("Your mission level is " + hero.getLevel());
 
-        panelContainer.setLayout(new GridLayout(3, 1));
+        panelContainer.setLayout(new GridLayout(2, 1));
+
+        JPanel      contentPanel = new JPanel(new GridLayout(1, 2));
+
+        // Your stats and story text
+        String      stats = "";
+        stats += "Your current game stats are as follows:\n";
+        stats += "Your hero " + hero.getName() + " is currently at position x:" + hero.getPosX() + " and y:" + hero.getPosY() + "\n";
+        stats += "Level: " + hero.getLevel() + "\n";
+        stats += "Experience: " + hero.getExp();
+        JTextArea   story = new JTextArea(stats);
+        contentPanel.add(story);
+
 
         // choose a direction to move
-        // choose a hero class
-        JPanel      middlePanel = new JPanel();
         JLabel      directionLabel = new JLabel("Choose a direction");
         JList       directionList = new JList(directions);
         directionList.setVisibleRowCount(4);
@@ -338,11 +379,11 @@ public class GUI extends JFrame implements WindowManager {
                 }
             }
         });
-        middlePanel.add(directionLabel);
-        middlePanel.add(directionLabel);
-        middlePanel.add(new JScrollPane(directionList));
+        contentPanel.add(directionLabel);
+        contentPanel.add(directionLabel);
+        contentPanel.add(new JScrollPane(directionList));
 
-        panelContainer.add(middlePanel);
+        panelContainer.add(contentPanel);
 
 
         // start game button
@@ -354,10 +395,19 @@ public class GUI extends JFrame implements WindowManager {
         buttonPanel.add(startGame);
 
         panelContainer.add(buttonPanel);
-
         panelContainer.updateUI();
 
-        this.repaint();
+        while (option == 0) {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                if (option != 0) {
+                    break;
+                }
+            }
+        }
+
+        return dir;
     }
 
     private class ButtonClickListener implements ActionListener {
@@ -386,10 +436,20 @@ public class GUI extends JFrame implements WindowManager {
                     statusLabel.setText("You have selected to continue");
                     option = 3;
                     break;
+                case "Move":
+                    // load a hero
+                    statusLabel.setText("You have selected to move your hero");
+                    option = 4;
+                    break;
                 default:
                     break;
             }
         }
+    }
+
+    @Override
+    public boolean getButtonStatus() {
+        return this.buttonPress;
     }
 }
 

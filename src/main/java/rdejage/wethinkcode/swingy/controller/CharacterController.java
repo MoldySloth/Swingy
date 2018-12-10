@@ -41,9 +41,13 @@ public class CharacterController {
     public static void addHero(Character hero, String filename) {
         // place the hero into the hero.txt file
         testFile(filename);
-
-        // append new hero to file
-        writeLine(hero.getInfo());
+        Integer     heroCount = readHeroes(filename);
+        if(heroCount > 0) {
+            // append new hero to file
+            System.out.println("Creating your hero:\n" + hero.getInfo());
+            writeLine(hero.getInfo());
+            heroes.add(hero);
+        }
     }
 
     // get a hero from the text file

@@ -25,15 +25,21 @@ public class GameController {
         view.startGame(hero);
         hero.setPosition(map.getSize());
         while(hero.getStatus()) {
-            view.gameScreen(hero, map);
             // get hero position and move
-//            int direction = view.getDirection();
-//            hero.moveCharacter(direction);
+            int direction = view.gameScreen(hero, map);
+//            if(!view.getButtonStatus()) {
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    System.out.println("Could not pause game");
+//                }
+//            }
+            hero.moveCharacter(direction);
             // check hero position on the map is still valid
-//            if(map.positionIsValid(hero.getPosX(), hero.getPosY())) {
-//                // check to see if there is an enemy
-//                Villain villain = map.isVillain();
-//                if(villain != null) {
+            if(map.positionIsValid(hero.getPosX(), hero.getPosY())) {
+                // check to see if there is an enemy
+                Villain villain = map.isVillain();
+                if(villain != null) {
 //                    // print out villain and villain stats
 //                    view.villainFound();
 //                    view.printInfo(villain.getInfo());
@@ -74,17 +80,15 @@ public class GameController {
 //                            view.runFailure(hero.name);
 //                        }
 //                    }
-//                }
-//            } else {
-//                // Hero has reached the end of the map...
+                }
+            } else {
+                // Hero has reached the end of the map...
 //                view.levelWon();
-//                // Update map based on level, play again...
-//                map = new MapGenerator(hero);
-//            }
-//            // print out game stats
-//            view.gameStats(this.hero);
-//            // update player
-//            CharacterController.updateHero();
+                // Update map based on level, play again...
+                map = new MapGenerator(hero);
+            }
+            // update player
+            CharacterController.updateHero();
         }
 //        view.gameLost();
     }

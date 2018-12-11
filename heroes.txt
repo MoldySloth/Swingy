@@ -1,11 +1,12 @@
 mike the Bruser,1,500,none,none,none
 Kevin the Bruser,1,0,none,none,none
-Harry the Necromancer,1,500,Pot of Luck,none,none
+Harry the Necromancer,3,3000,none,Elixir of Redbull,Helm
 Larry the Bruser,2,2000,none,none,none
-Jim the Slayer,2,1000,none,Pot of Luck,Helm
+Jim the Slayer,4,6000,Elixir of Redbull,none,none
 Marvin the Bruser,1,0,none,none,none
 Luke the Slayer,1,0,none,none,none
 Harry the Paladin,1,0,none,none,none
 Larry the Paladin,1,0,none,none,none
 Dave the Slayer,1,0,none,none,none
 Marvin the Necromancer,3,3000,none,none,none
+Kevin the Bruser,1,0,none,none,none

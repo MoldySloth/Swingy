@@ -7,24 +7,20 @@ import rdejage.wethinkcode.swingy.model.characters.CharacterFactory;
 import rdejage.wethinkcode.swingy.model.characters.Villain;
 import rdejage.wethinkcode.swingy.view.WindowManager;
 
-import javax.lang.model.element.NestingKind;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.text.Document;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.Buffer;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class GUI extends JFrame implements WindowManager {
     // swing container
@@ -36,19 +32,17 @@ public class GUI extends JFrame implements WindowManager {
     private boolean     buttonPress = false;
 
     // hero variables
-    JList   heroTypes;
     private String[]    heroClasses = {"Paladin", "Bruser", "Necromancer", "Slayer"};
     private Integer     heroClass;
     private JTextField  tf;
     private String      name = "";
-    private String[]    directions = {"North", "East", "South", "West"};
     private Integer     dir = 0;
 
 
     public GUI() {
         // creating the frame
         setTitle("SWINGY");
-        setSize(1280, 720);
+        setSize(1280, 800);
         setResizable(false);
         setIgnoreRepaint(true);
         setLocationRelativeTo(null); // places window in center of screen
@@ -56,6 +50,7 @@ public class GUI extends JFrame implements WindowManager {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         headerLabel = new JLabel("", JLabel.CENTER);
+        headerLabel.setSize(350, 100);
         statusLabel = new JLabel("", JLabel.CENTER);
         statusLabel.setSize(350, 100);
 
@@ -67,7 +62,6 @@ public class GUI extends JFrame implements WindowManager {
         });
 
         panelContainer.setLayout(new FlowLayout());
-        panelContainer.setSize(800, 600);
 
         add(headerLabel);
         add(panelContainer);
@@ -78,7 +72,7 @@ public class GUI extends JFrame implements WindowManager {
     @Override
     public Integer startScreen() {
         // page main heading
-        headerLabel.setText("Welcome to SWINGY");
+        headerLabel.setText("..........     SWINGY     ..........");
         option = 0;
 
         JButton createHero = new JButton("Create a new Hero");
@@ -117,6 +111,16 @@ public class GUI extends JFrame implements WindowManager {
         // panel settings
         panelContainer.setLayout(new GridLayout(3, 1));
 
+        // start game button
+        JPanel      buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JButton startGame = new JButton("Start Game");
+        startGame.setActionCommand("Start");
+        startGame.setEnabled(false);
+        startGame.addActionListener(new ButtonClickListener(
+        ));
+        buttonPanel.add(startGame);
+
         // create hero name
         JPanel      topPanel = new JPanel();
         JLabel      nameLabel = new JLabel("Enter your hero name:");
@@ -139,6 +143,7 @@ public class GUI extends JFrame implements WindowManager {
                 statusLabel.setText("You have selected " + tf.getText() + " as your hero name");
                 name = tf.getText();
             }
+
         });
         topPanel.add(nameLabel);
         topPanel.add(nameLabel);
@@ -147,7 +152,7 @@ public class GUI extends JFrame implements WindowManager {
         // choose a hero class
         JPanel      middlePanel = new JPanel();
         JLabel      classLabel = new JLabel("Select a hero type or class:");
-        JList   heroTypes = new JList(heroClasses);
+        JList       heroTypes = new JList(heroClasses);
         heroTypes.setVisibleRowCount(4);
         heroTypes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         heroTypes.addListSelectionListener(new ListSelectionListener() {
@@ -183,20 +188,16 @@ public class GUI extends JFrame implements WindowManager {
         panelContainer.add(topPanel);
         panelContainer.add(middlePanel);
 
-        // start game button
-        JPanel      buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        JButton startGame = new JButton("Start Game");
-        startGame.setActionCommand("Start");
-        startGame.addActionListener(new ButtonClickListener());
-        buttonPanel.add(startGame);
-
+        // disable button if not selected and name is empty??
         panelContainer.add(buttonPanel);
 
         panelContainer.updateUI();
 
-
         while (option == 0) {
+            if(!tf.getText().trim().isEmpty() && heroTypes.getSelectedIndex() > 0) {
+                startGame.setEnabled(true);
+            }
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -270,6 +271,7 @@ public class GUI extends JFrame implements WindowManager {
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JButton startGame = new JButton("Start Game");
         startGame.setActionCommand("Start");
+        startGame.setEnabled(false);
         startGame.addActionListener(new ButtonClickListener());
         buttonPanel.add(startGame);
 
@@ -279,6 +281,9 @@ public class GUI extends JFrame implements WindowManager {
         buttonPress = false;
 
         while (option == 0) {
+            if(listHeroes.getSelectedIndex() > 0) {
+                startGame.setEnabled(true);
+            }
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -297,7 +302,7 @@ public class GUI extends JFrame implements WindowManager {
     @Override
     public void     startGame(Character hero) {
         // starting the mission intro
-        headerLabel.setText(".................................");
+        headerLabel.setText("...........     YOUR MISSION     ..........");
         option = 0;
         String   content = "Your mission as a hero is to move to the edge of the map...\nYour starting position is in the center of the map.\nGood luck " + hero.getName() + "!";
 
@@ -336,24 +341,31 @@ public class GUI extends JFrame implements WindowManager {
     public Integer     gameScreen(Character hero) {
         dir = 0;
         // main game screen and layout
-        headerLabel.setText("Your mission level is " + hero.getLevel());
+        headerLabel.setText("..........     LEVEL " + hero.getLevel() + "     ..........");
 
-        panelContainer.setLayout(new GridLayout(3, 1));
+        panelContainer.setLayout(new GridLayout(2, 1));
 
-        JPanel      contentPanel = new JPanel(new FlowLayout());
+        JPanel      contentPanel = new JPanel();
+        contentPanel.setSize(600, 1000);
 
         // Your stats and story text
         String      stats = "";
         stats += "Your current game stats are as follows:\n";
         stats += "Your hero " + hero.getName() + " is currently at position x:" + hero.getPosX() + " and y:" + hero.getPosY() + "\n";
+        stats += "HP: " + hero.getHitPoints() + "\n";
+        stats += "Attack: " + hero.getAttack() + "\n";
+        stats += "Armor: " + hero.getAromr() + "\n";
         stats += "Level: " + hero.getLevel() + "\n";
         stats += "Experience: " + hero.getExp();
-        JTextArea   story = new JTextArea(stats);
+        JTextArea   story = new JTextArea();
+        story.setEditable(false);
+        story.setText(stats);
         contentPanel.add(story);
 
 
         // choose a direction to move
         JPanel      directionPanel = new JPanel(new FlowLayout());
+        directionPanel.setSize(600, 200);
         JLabel      directionLabel = new JLabel("Choose a direction");
         JButton     moveNorth = new JButton("North");
         moveNorth.setActionCommand("North");
@@ -400,7 +412,7 @@ public class GUI extends JFrame implements WindowManager {
     public Integer     fightScreen(Character hero, Villain villain) {
         option = 0;
         // main game screen and layout
-        headerLabel.setText("Your have encountered a villain!");
+        headerLabel.setText("..........     A VILLAIN HAS APPEARED     ..........");
 
         panelContainer.setLayout(new GridLayout(2, 1));
 
@@ -450,13 +462,13 @@ public class GUI extends JFrame implements WindowManager {
     @Override
     public void     fightWon(String heroName, String villainName) {
         // starting the mission intro
-        headerLabel.setText("CONGRATS! " + heroName + " has won the battle against " + villainName);
+        headerLabel.setText("..........     YOU HAVE WON THE BATTLE     ..........");
         option = 0;
         panelContainer.setLayout(new GridLayout(2, 1));
 
         // Text content
         JPanel      middlePanel = new JPanel();
-        String      content = "CONGRATS!" + heroName + " has won the battle against" + villainName + "\n";
+        String      content = "CONGRATS! " + heroName + " has won the battle against " + villainName + "\n";
         content += "The battle was long and hard... You probably lost some health in the process\n";
         content += "but you survived to fight another battle\n";
         content += "\n\nYou might even finish the mission.";
@@ -491,7 +503,7 @@ public class GUI extends JFrame implements WindowManager {
     public Integer     itemDrop(Artifact item) {
         option = 0;
         // main game screen and layout
-        headerLabel.setText("Your lucky day!");
+        headerLabel.setText("..........     YOUR LUCKY DAY!     ..........");
 
         panelContainer.setLayout(new GridLayout(2, 1));
 
@@ -541,7 +553,7 @@ public class GUI extends JFrame implements WindowManager {
     @Override
     public void     levelWon() {
         // starting the mission intro
-        headerLabel.setText("CONGRATS!!! You have completed your mission.");
+        headerLabel.setText("..........     YOU HAVE COMPLETED YOUR MISSION     ..........");
         option = 0;
         panelContainer.setLayout(new GridLayout(2, 1));
 

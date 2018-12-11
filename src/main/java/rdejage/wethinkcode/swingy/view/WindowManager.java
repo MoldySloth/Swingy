@@ -16,7 +16,5 @@ public interface WindowManager {
     void        levelWon();
     void        gameLost();
 
-
     boolean     getButtonStatus();
-
 }

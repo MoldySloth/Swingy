@@ -18,7 +18,7 @@ public class CharacterController {
             try {
                 file.createNewFile();
             } catch(IOException e) {
-                System.out.println("Cannot create file heroes.txt");
+                System.out.println("Cannot create file " + filename);
                 System.exit(1);
             }
         }
@@ -32,7 +32,7 @@ public class CharacterController {
             bw.newLine();
             bw.flush();
         } catch (IOException e) {
-            System.out.println("Cannot write to file heroes.txt");
+            System.out.println("Cannot write to file " + fileName);
             System.exit(1);
         }
     }
@@ -44,7 +44,6 @@ public class CharacterController {
         Integer     heroCount = readHeroes(filename);
         if(heroCount >= 0) {
             // append new hero to file
-            System.out.println("Creating your hero:\n" + hero.getInfo());
             writeLine(hero.getInfo());
             heroes.add(hero);
         }
@@ -109,7 +108,6 @@ public class CharacterController {
         File file = new File(fileName);
         file.delete();
 
-        System.out.println("Updating hero...");
         for(Character next: heroes) {
             // append new heroes to file
             writeLine(next.getInfo());

@@ -26,15 +26,9 @@ public class GameController {
         hero.setPosition(map.getSize());
         while(hero.getStatus()) {
             // get hero position and move
-//            try {
-//                Thread.sleep(40);
-//            } catch (InterruptedException e) {
-//
-//            }
             int direction = view.gameScreen(hero);
             if(direction > 0) {
                 hero.moveCharacter(direction);
-                System.out.println("Moving hero...");
                 // check hero position on the map is still valid
                 if(map.positionIsValid(hero.getPosX(), hero.getPosY())) {
                     // check to see if there is an enemy
@@ -77,8 +71,6 @@ public class GameController {
 ////                            break;
                                 }
                         }
-                    } else {
-                        System.out.println("No villain was found...");
                     }
                 } else {
                     // Hero has reached the end of the map...

@@ -13,23 +13,18 @@ public class App {
     private static final String     fileName = "heroes.txt";
 
     public static void main(String[] args) {
-        System.out.println("App is working");
-
-        GameController          game = null;
+        GameController          game;
         WindowManager           view = null;
         Character               hero = null;
-        MapGenerator            map = null;
-//        GUI                     view = null;
+        MapGenerator            map;
 
         // If there are arguments
         if (args.length > 0) {
             if (args[0].equals("GUI")) {
                 // if args = GUI then use swing GUI
-                System.out.println(args[0]);
                 view = new GUI();
             } else if (args[0].equals("console")) {
                 // if args = console then use console
-                System.out.println(args[0]);
                 view = new ConsoleView();
             } else {
                 // exit with error
@@ -39,13 +34,11 @@ public class App {
 
             // Get options from view to use an old hero or create a new one
             int option = view.startScreen();
-            System.out.println("Your option was " + option);
             if(option == 2) {
                 // Use an old hero from file, check if heroes exist
                 Integer     heroes = CharacterController.readHeroes(fileName);
                 if(heroes > 0) {
                     Integer     heroIndex = view.loadHeroScreen(fileName);
-                    System.out.println("You have chosen hero number " + heroIndex);
                     hero = CharacterController.getHero(heroIndex);
                 } else {
                     option = 1;

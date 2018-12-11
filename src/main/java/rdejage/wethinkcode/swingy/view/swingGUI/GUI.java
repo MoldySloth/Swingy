@@ -688,36 +688,3 @@ public class GUI extends JFrame implements WindowManager {
         return this.buttonPress;
     }
 }
-
-//    private static void     addComponents(WindowManager win) {
-//
-//    }
-
-
-
-
-//    void        printMapInfo(MapGenerator map);
-//    Integer     getGameOptions();
-//    Integer     getDirection();
-//    Integer     actionOption();
-//
-//    void        printInfo(String info);
-//    void        startGame(String info);
-//    void        gameLost();
-//    void        levelWon();
-//    void        gameStats(Character hero);
-//
-//    Integer     loadHeroes(String fileName);
-//    String      heroName();
-//    Integer     heroClass();
-//    void        heroTakesDamage(Integer value);
-//    void        heroDeath();
-//    void        fightStart(String heroName, String villainType);
-//    void        fightWon(String heroName, String villainType);
-//    Integer     chooseItem(Artifact item);
-//    void        runSuccess(String heroName);
-//    void        runFailure(String heroName);
-//
-//    void        villainFound();
-//    void        villainTakesDamage(String villainName, Integer value);
-

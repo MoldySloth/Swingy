@@ -1,6 +1,5 @@
 package rdejage.wethinkcode.swingy.view.console;
 
-import rdejage.wethinkcode.swingy.model.MapGenerator;
 import rdejage.wethinkcode.swingy.model.artifacts.Artifact;
 import rdejage.wethinkcode.swingy.model.characters.Character;
 import rdejage.wethinkcode.swingy.model.characters.CharacterFactory;
@@ -17,13 +16,7 @@ public class ConsoleView implements WindowManager {
     // Console colors
     String      colorRed = "\033[31;1m";
     String      colorYellow = "\033[33m";
-
     String      endColor = "\33[0m";
-
-//    @Override
-//    public void     printMapInfo(MapGenerator map) {
-//        System.out.println("Your map size is " + map.getSize());
-//    }
 
     private void prettyLine() {
         System.out.println(colorYellow + "--------------------------------------------------" + endColor);
@@ -69,9 +62,9 @@ public class ConsoleView implements WindowManager {
     }
 
 
-    private static String   heroName() {
+    private String   heroName() {
         // Function to get the hero name input from the player
-        System.out.println("Please enter a name for your Hero:");
+        System.out.println(colorRed + "Please enter a name for your Hero:" + endColor);
         String  name = "";
         boolean     validInput = false;
         while(!validInput) {
@@ -90,10 +83,10 @@ public class ConsoleView implements WindowManager {
         return name;
     }
 
-    private static Integer heroClass() {
+    private Integer heroClass() {
         // Function to get the hero class input from the player
-        System.out.println("Please select a hero class:");
-        System.out.println("* this is what gives your hero their unique qualities.");
+        System.out.println(colorRed + "Please select a hero class:");
+        System.out.println("* this is what gives your hero their unique qualities." + endColor);
 
         boolean     validInput = false;
         int         option = 0;
@@ -166,6 +159,9 @@ public class ConsoleView implements WindowManager {
         // Function to get hero movement input from the player
         System.out.println(colorRed +"Your current game stats are as follows:");
         System.out.println("Your hero " + hero.getName() + " is currently at position x:" + hero.getPosX() + " and y:" + hero.getPosY() );
+        System.out.println("HP: " + hero.getHitPoints());
+        System.out.println("Attack: " + hero.getAttack());
+        System.out.println("Armor: " + hero.getAromr());
         System.out.println("Level: " + hero.getLevel());
         System.out.println("Experience: " + hero.getExp() + endColor);
         prettyLine();
@@ -198,7 +194,7 @@ public class ConsoleView implements WindowManager {
     @Override
     public Integer  fightScreen(Character hero, Villain villain) {
         prettyLine();
-        System.out.println(colorRed +"Your have encountered a villain!" + endColor);
+        System.out.println(colorRed + "Your have encountered a villain!" + endColor);
         printInfo(villain.getInfo());
         prettyLine();
 
@@ -237,19 +233,24 @@ public class ConsoleView implements WindowManager {
 
     @Override
     public void     levelWon() {
-        System.out.println("CONGRATS!!! You have completed your mission.");
+        System.out.println(colorYellow + "CONGRATS!!! YOU HAVE COMPLETED YOUR MISSION.");
+        System.out.println("Your journey will only get harder from here...");
+        System.out.println("More danger lies ahead" + endColor);
+        prettyLine();
+        prettyLine();
+        System.out.print('\n');
+        System.out.print('\n');
     }
-//
-//    @Override
-//    public void        gameStats(Character hero) {
-//        System.out.println("Your current game stats are as follows:");
-//        System.out.println("Your hero " + hero.getName() + " is currently at position x:" + hero.getPosX() + " and y:" + hero.getPosY() );
-//        System.out.println("Level: " + hero.getLevel());
-//        System.out.println("Experience: " + hero.getExp());
-//    }
-//
+
     public void        gameLost() {
-        System.out.println("You have lost the mission and have died... Play again to try save the world!");
+        System.out.print('\n');
+        System.out.print('\n');
+        System.out.println(colorYellow + "..........     GAME OVER     .........." + endColor);
+        System.out.println(colorRed +"The earth SHAKES!!!");
+        System.out.println("Terror falls upon the land, as evil takes over");
+        System.out.print('\n');
+        System.out.print('\n');
+        System.out.println("Killing all in its path!" + endColor);
     }
 
     // give options to take or leave item
@@ -262,7 +263,8 @@ public class ConsoleView implements WindowManager {
             try {
                 Scanner     scanner = new Scanner(System.in);
                 // get item info...
-                System.out.println(item.getArtifactName() + " was dropped during your battle:");
+                prettyLine();
+                System.out.println(colorYellow + item.getArtifactName() + " was dropped during your battle:" + endColor);
                 System.out.println("Select an action to perform");
                 System.out.println("1. Take the item");
                 System.out.println("2. Leave the item");
@@ -283,7 +285,12 @@ public class ConsoleView implements WindowManager {
 
     @Override
     public void     fightWon(String heroName, String villainType) {
-        System.out.println(heroName + " has won the battle with " + villainType);
+        System.out.print('\n');
+        System.out.print('\n');
+        prettyLine();
+        System.out.println(colorRed + heroName + " has won the battle with " + villainType + endColor);
+        System.out.print('\n');
+        System.out.print('\n');
     }
 //
 //    @Override

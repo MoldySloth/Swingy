@@ -5,7 +5,7 @@ pipeline {
         	jdk 'jdk8'
 	}
 	stages {
-		stage('Build') {
+		stage('Test') {
 			steps {
 				sh 'mvn clean package'
 			}
